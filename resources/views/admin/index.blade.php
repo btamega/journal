@@ -80,6 +80,11 @@
                     <span>ADMINS</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
+            <li class="nav-item">
+                <a class="nav-link" href="{{URL::to('/admin/template')}}">
+                    <i class="fas fa-user-cog"></i>
+                    <span>GENERER TEMPLATE</span></a>
+            </li>
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>

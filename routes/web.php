@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Template\TemplateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VolumeController;
 use App\Http\Controllers\FasciculesController;
@@ -149,3 +150,9 @@ Route::get("/api/article/{idArticle}/auteurs", [ArchivesController::class, 'getA
 Route::get("/api/lastIssues", [ArchivesController::class, 'lastIssues']);
 Route::get("/api/recentArchives", [ArchivesController::class, 'archives']);
 Route::get("/api/archives-{annee1}-{annee2}", [ArchivesController::class, 'archives20102019']);
+
+/**
+ * @template 
+ */
+
+Route::get("/admin/template", [TemplateController::class, 'index']);
