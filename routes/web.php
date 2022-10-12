@@ -159,3 +159,9 @@ Route::get("/admin/template", [TemplateController::class, 'index']);
 Route::get('/admin/colors', function () {
     return view('/admin/template/colors');
 });
+Route::get('template/form', function () {
+    return view('/admin/template/forms/form-control');
+});
+Route::get('template/name', function () {
+    return view('/admin/template/typography');
+});

@@ -67,10 +67,10 @@
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-drop")}}"></use>
             </svg> Colors</a></li>
-        <li class="nav-item"><a class="nav-link" href="typography.html">
+        <li class="nav-item"><a class="nav-link" href="{{URL::to("template/name")}}">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-pencil")}}"></use>
-            </svg> Typography</a></li>
+            </svg> Nom du journal</a></li>
         <li class="nav-title">Components</li>
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
@@ -113,7 +113,7 @@
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-notes")}}"></use>
             </svg> Forms</a>
           <ul class="nav-group-items">
-            <li class="nav-item"><a class="nav-link" href="forms/form-control.html"> Form Control</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::to("template/form")}}"> Form Control</a></li>
             <li class="nav-item"><a class="nav-link" href="forms/select.html"> Select</a></li>
             <li class="nav-item"><a class="nav-link" href="forms/checks-radios.html"> Checks and radios</a></li>
             <li class="nav-item"><a class="nav-link" href="forms/range.html"> Range</a></li>
@@ -277,45 +277,71 @@
       </header>
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          <div class="card mb-4">
-            <div class="card-header"> Theme colors</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Primary Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-secondary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Secondary Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-success theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Success Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-danger theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Danger Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-warning theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Warning Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-info theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Info Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-light theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Light Color</h6>
-                </div>
-                <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                  <div class="bg-dark theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                  <h6>Brand Dark Color</h6>
+        <div class="card mb-4">
+                <div class="card-header"><strong>Choisissez votre thème</strong><span class="small ms-1"></span></div>
+                <div class="card-body">
+                  <div class="example">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-739" role="tab">
+                          <svg class="icon me-2">
+                            <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-code")}}"></use>
+                          </svg>Preview</a></li>
+                      <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/forms/form-control/" target="_blank">
+                          <svg class="icon me-2">
+                            <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-media-play")}}"></use>
+                          </svg>Display</a></li>
+                    </ul>
+                    <div class="tab-content rounded-bottom">
+                      <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-739">
+                      <div class="card mb-4">
+                      <div class="card-body">
+                        <form method="post" action="{{URL::to("postColor")}}">
+                          @csrf
+                          <div class="row">
+                            
+                              <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                                <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                                <h6>Brand Primary Color</h6>
+                              </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-secondary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Secondary Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-success theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Success Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-danger theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Danger Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-warning theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Warning Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-info theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Info Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-light theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Light Color</h6>
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <div class="bg-dark theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
+                              <h6>Brand Dark Color</h6>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          
         </div>
       </div>
       <footer class="footer">
