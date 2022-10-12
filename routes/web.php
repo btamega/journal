@@ -156,3 +156,6 @@ Route::get("/api/archives-{annee1}-{annee2}", [ArchivesController::class, 'archi
  */
 
 Route::get("/admin/template", [TemplateController::class, 'index']);
+Route::get('/admin/colors', function () {
+    return view('/admin/template/colors');
+});
