@@ -1,0 +1,25 @@
+h6{font-family:Abhaya Libre, sans-serif; 
+    font-size:27px; font-weight:normal; 
+  }
+  .sp-megamenu-parent{
+    font-family:Abhaya Libre, sans-serif; 
+    font-size:18px; 
+    font-weight:normal; 
+  }
+  #sp-header-top{ 
+    background-color:#ececec; 
+  }
+  #sp-breadcrumb-block{ 
+    background-color:#f6f6f6; 
+  }
+  #sp-block-acymailling{ 
+    background-image:url("/fr/images/bg1.jpg");
+    background-repeat:no-repeat;background-size:cover;
+    background-position:50% 50%; 
+  }
+  #sp-footer{ 
+    background-color:#060d11; 
+  }
+  div.mod_search35 input[type="search"]{ 
+    width:auto; 
+  }
