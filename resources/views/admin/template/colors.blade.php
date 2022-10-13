@@ -62,7 +62,7 @@
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/assets/icons/align-center.svg")}}"></use>
             </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
-        <li class="nav-title">Theme</li>
+        <li class="nav-title">Template</li>
         <li class="nav-item"><a class="nav-link" href="{{URL::to("admin/colors")}}">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-drop")}}"></use>
@@ -70,12 +70,12 @@
         <li class="nav-item"><a class="nav-link" href="{{URL::to("template/name")}}">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-pencil")}}"></use>
-            </svg> Nom du journal</a></li>
+            </svg> Journal</a></li>
         <li class="nav-title">Components</li>
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-puzzle")}}"></use>
-            </svg> Base</a>
+            </svg> Menus</a>
           <ul class="nav-group-items">
             <li class="nav-item"><a class="nav-link" href="base/accordion.html"><span class="nav-icon"></span> Accordion</a></li>
             <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span> Breadcrumb</a></li>
@@ -300,12 +300,17 @@
                           <div class="row">
                             
                               <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                                <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                                <h6>Brand Primary Color</h6>
+                                <input type="color" class="form-control form-control-color bg-primary theme-color w-75 rounded mb-2" id="exampleColorInput" value="#563d7c" title="Choose your color" style="padding-top:75%">
+                                {{-- <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>--}}
+                                <h6>Brand Primary Color</h6> 
                               </div>
                             <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-secondary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Secondary Color</h6>
+                              <label for="exampleColorInput" class="form-label">Menu</label>
+                              <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                            </div>
+                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+                              <label for="exampleColorInput" class="form-label">Arrière-plan</label>
+                              <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
                             </div>
                             <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
                               <div class="bg-success theme-color w-75 rounded mb-2" style="padding-top:75%"></div>

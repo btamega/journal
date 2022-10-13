@@ -9,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Couleur de la template</title>
+    <title>Informations du journal</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset("template/assets/favicon/apple-icon-57x57.png")}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset("template/assets/favicon/apple-icon-60x60.png")}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset("template/assets/favicon/apple-icon-72x72.png")}}">
@@ -62,7 +62,7 @@
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/assets/icons/align-center.svg")}}"></use>
             </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
-        <li class="nav-title">Theme</li>
+        <li class="nav-title">Template</li>
         <li class="nav-item"><a class="nav-link" href="{{URL::to("admin/colors")}}">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-drop")}}"></use>
@@ -70,12 +70,12 @@
         <li class="nav-item"><a class="nav-link" href="{{URL::to("template/name")}}">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-pencil")}}"></use>
-            </svg> Nom du journal</a></li>
+            </svg> Journal</a></li>
         <li class="nav-title">Components</li>
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-puzzle")}}"></use>
-            </svg> Base</a>
+            </svg> Menus</a>
           <ul class="nav-group-items">
             <li class="nav-item"><a class="nav-link" href="base/accordion.html"><span class="nav-icon"></span> Accordion</a></li>
             <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span> Breadcrumb</a></li>
@@ -266,7 +266,7 @@
             <ol class="breadcrumb my-0 ms-2">
               <li class="breadcrumb-item"><a href="{{URL::to("admin/template")}}">Home</a>
               </li>
-              <li class="breadcrumb-item active"><span>Nom du journal</span></li>
+              <li class="breadcrumb-item active"><span>Journal</span></li>
             </ol>
           </nav>
         </div>
@@ -277,7 +277,7 @@
             <div class="card-header">Informations de base</div>
             <div class="card-body">
               <p>Veuillez choisir le logo et le nom du journal</p>
-              <table class="table">
+              {{-- <table class="table">
                 <thead>
                   <tr>
                     <th>Heading</th>
@@ -322,97 +322,110 @@
                     <td><span class="h6">h6. Bootstrap heading</span></td>
                   </tr>
                 </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header">Headings</div>
-            <div class="card-body">
-              <p><code class="highlighter-rouge">.h1</code> through<code class="highlighter-rouge">.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
-              <div class="bd-example">
-                <p class="h1">h1. Bootstrap heading</p>
-                <p class="h2">h2. Bootstrap heading</p>
-                <p class="h3">h3. Bootstrap heading</p>
-                <p class="h4">h4. Bootstrap heading</p>
-                <p class="h5">h5. Bootstrap heading</p>
-                <p class="h6">h6. Bootstrap heading</p>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header">Display headings</div>
-            <div class="card-body">
-              <p>Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a<strong>display heading</strong>—a larger, slightly more opinionated heading style.</p>
-              <div class="bd-example bd-example-type">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td><span class="display-1">Display 1</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="display-2">Display 2</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="display-3">Display 3</span></td>
-                    </tr>
-                    <tr>
-                      <td><span class="display-4">Display 4</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header">Inline text elements</div>
-            <div class="card-body">
-              <p>Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a<strong>display heading</strong>—a larger, slightly more opinionated heading style.</p>
-              <div class="bd-example">
-                <p>You can use the mark tag to
-                  <mark>highlight</mark> text.
-                </p>
-                <p>
-                  <del>This line of text is meant to be treated as deleted text.</del>
-                </p>
-                <p>
-                  <s>This line of text is meant to be treated as no longer accurate.</s>
-                </p>
-                <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
-                <p>
-                  <u>This line of text will render as underlined</u>
-                </p>
-                <p><small>This line of text is meant to be treated as fine print.</small></p>
-                <p><strong>This line rendered as bold text.</strong></p>
-                <p><em>This line rendered as italicized text.</em></p>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header">Description list alignment</div>
-            <div class="card-body">
-              <p>Align terms and descriptions horizontally by using our grid system’s predefined classes (or semantic mixins). For longer terms, you can optionally add a<code class="highlighter-rouge">.text-truncate</code> class to truncate the text with an ellipsis.</p>
-              <div class="bd-example">
-                <dl class="row">
-                  <dt class="col-sm-3">Description lists</dt>
-                  <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-                  <dt class="col-sm-3">Euismod</dt>
-                  <dd class="col-sm-9">
-                    <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
-                    <p>Donec id elit non mi porta gravida at eget metus.</p>
-                  </dd>
-                  <dt class="col-sm-3">Malesuada porta</dt>
-                  <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
-                  <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-                  <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-                  <dt class="col-sm-3">Nesting</dt>
-                  <dd class="col-sm-9">
-                    <dl class="row">
-                      <dt class="col-sm-4">Nested definition list</dt>
-                      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
-                    </dl>
-                  </dd>
-                </dl>
-              </div>
+              </table> --}}
+              <form>
+                <fieldset>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom du journal</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName">
+                    {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Nom du coordinateur principal</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Pour quelle université</label>
+                    <select class="form-select" id="exampleSelect1">
+                      <option>Cadi Ayyad Marrakech</option>
+                      <option>Hassan I Settat</option>
+                      <option>AbdelMalek Essadi Tanger</option>
+                      <option>Mohamed V Rabat</option>
+                      <option>Hassan II Casablanca</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Logo du journal</label>
+                    <input class="form-control" type="file" id="formFile" name="logo">
+                  </div>
+                  <fieldset class="form-group">
+                    <legend class="mt-4">Disposition du menu</legend>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                      <label class="form-check-label" for="optionsRadios1">
+                        Horizontal
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      <label class="form-check-label" for="optionsRadios2">
+                        Vertical
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form-group">
+                    <legend>Choix des menus</legend>
+                    <div class="form-check">
+                      <input class="form-check-input" id="all" type="checkbox" onclick="toggle(this)" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Tous
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="menu" checked="" >
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Home
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="about" checked="" name="menu">
+                      <label class="form-check-label" for="about">
+                        About
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="recommandation" name="menu">
+                      <label class="form-check-label" for="recommandation">
+                        Recommandation
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="archives" name="menu">
+                      <label class="form-check-label" for="archives">
+                        Archives
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="lastIssues" name="menu">
+                      <label class="form-check-label" for="lastIssues">
+                        Last Issues
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="contact" name="menu">
+                      <label class="form-check-label" for="contact">
+                        Contact
+                      </label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="form-group">
+                    <div class="form-group row">
+                      <div class="col-md-12">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="myCheck" name="other" onclick="showfield()">
+                          <label class="form-check-label" for="other">
+                            Autre
+                          </label>
+                        </div>
+                        <div class="form-group">
+                          <input style="display:none" type="text" class="form-control" id="text" name="other">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset> <br>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </fieldset>
+              </form>
             </div>
           </div>
         </div>
@@ -431,5 +444,30 @@
     <script src="{{asset("template/js/main.js")}}"></script>
     <script> 
     </script>
+     <script type="text/javascript">
+      function showfield(){
+        var text = document.getElementById("text");
+        var checkBox = document.getElementById("myCheck");
+        if (checkBox.checked == true){
+          text.style.display = "block";
+        } else {
+          text.style.display = "none";
+        }
+      }
+      function toggle(source) {
+        checkboxes = document.getElementsByName('menu');
+        var check = document.getElementById("all");
+        if (check.checked == true){
+          for(var i=0, n=checkboxes.length;i<n;i++) {
+          checkboxes[i].checked = source.checked;
+        }
+        }else{
+          for(var i=0, n=checkboxes.length;i<n;i++) {
+          checkboxes[i].checked = false;
+        }
+      }
+        
+      }
+      </script>
   </body>
 </html>
