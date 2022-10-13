@@ -165,3 +165,45 @@ Route::get('template/form', function () {
 Route::get('template/name', function () {
     return view('/admin/template/typography');
 });
+Route::get('template/accordion', function () {
+    return view('/admin/template/base/accordion');
+});
+Route::get('template/breadcrumb', function () {
+    return view('/admin/template/base/breadcrumb');
+});
+Route::get('template/cards', function () {
+    return view('/admin/template/base/cards');
+});
+Route::get('template/carousel', function () {
+    return view('/admin/template/base/carousel');
+});
+Route::get('template/collapse', function () {
+    return view('/admin/template/base/collapse');
+});
+Route::get('template/list-group', function () {
+    return view('/admin/template/base/list-group');
+});
+Route::get('template/navs-tabs', function () {
+    return view('/admin/template/base/navs-tabs');
+});
+Route::get('template/pagination', function () {
+    return view('/admin/template/base/pagination');
+});
+Route::get('template/placeholders', function () {
+    return view('/admin/template/base/placeholders');
+});
+Route::get('template/popovers', function () {
+    return view('/admin/template/base/popovers');
+});
+Route::get('template/progress', function () {
+    return view('/admin/template/base/progress');
+});
+Route::get('template/spinners', function () {
+    return view('/admin/template/base/spinners');
+});
+Route::get('template/tables', function () {
+    return view('/admin/template/base/tables');
+});
+Route::get('template/tooltips', function () {
+    return view('/admin/template/base/tooltips');
+});
