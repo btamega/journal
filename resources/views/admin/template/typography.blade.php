@@ -277,87 +277,58 @@
             <div class="card-header">Informations de base</div>
             <div class="card-body">
               <p>Veuillez choisir le logo et le nom du journal</p>
-              {{-- <table class="table">
-                <thead>
-                  <tr>
-                    <th>Heading</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
-                    </td>
-                    <td><span class="h1">h1. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
-                    </td>
-                    <td><span class="h2">h2. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
-                    </td>
-                    <td><span class="h3">h3. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
-                    </td>
-                    <td><span class="h4">h4. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
-                    </td>
-                    <td><span class="h5">h5. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
-                    </td>
-                    <td><span class="h6">h6. Bootstrap heading</span></td>
-                  </tr>
-                </tbody>
-              </table> --}}
-              <form>
+              <form method="POST" action="{{route('template.journal')}}">
+                @csrf
                 <fieldset>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nom du journal</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName">
-                    {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nom du coordinateur principal</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleSelect1">Pour quelle université</label>
-                    <select class="form-select" id="exampleSelect1">
-                      <option>Cadi Ayyad Marrakech</option>
-                      <option>Hassan I Settat</option>
-                      <option>AbdelMalek Essadi Tanger</option>
-                      <option>Mohamed V Rabat</option>
-                      <option>Hassan II Casablanca</option>
-                    </select>
-                  </div>
+                  <fieldset class="form-group">
+                    <legend class="mt-4">Organisation</legend>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="organisation" id="universityId" value="option1"  onclick="showOrganisation()">
+                      <label class="form-check-label" for="universityId">
+                        Université
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="organisation">
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="organisation" id="associationId" value="option2" onclick="showOrganisation()">
+                      <label class="form-check-label" for="associationId">
+                        Association
+                      </label>
+                    </div>
+                    
+                    <div class="form-group">
+                      <input style="display:none" type="text" class="form-control" id="textAssociation" name="organisation">
+                    </div>
+                  </fieldset>
                   <div class="form-group">
                     <label for="formFile" class="form-label">Logo du journal</label>
-                    <input class="form-control" type="file" id="formFile" name="logo">
+                    <input class="form-control" type="file" id="formFile" name="logo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Deuxième logo du journal</label>
+                    <input class="form-control" type="file" id="formFile" name="logo2">
+                    <small style="color: red" >Facultatif</small>
                   </div>
                   <fieldset class="form-group">
                     <legend class="mt-4">Disposition du menu</legend>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios1" value="Horizontal" checked="">
                       <label class="form-check-label" for="optionsRadios1">
                         Horizontal
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios2" value="Vertical">
                       <label class="form-check-label" for="optionsRadios2">
                         Vertical
                       </label>
@@ -452,6 +423,23 @@
           text.style.display = "block";
         } else {
           text.style.display = "none";
+        }
+      }
+      function showOrganisation(){
+        var text = document.getElementById("textUniversite");
+        var checkBox = document.getElementById("universityId");
+        var textAssociation = document.getElementById("textAssociation");
+        var checkBoxAssociation = document.getElementById("associationId");
+        if (checkBox.checked == true){
+          checkBoxAssociation.checked=false;
+          text.style.display = "block";
+          textAssociation.value='';
+          textAssociation.style.display = "none";
+        } else {
+          checkBoxAssociation.checked=true;
+          text.value='';
+          text.style.display = "none";
+          textAssociation.style.display = "block";
         }
       }
       function toggle(source) {

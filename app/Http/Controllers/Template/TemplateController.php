@@ -16,6 +16,11 @@ class TemplateController extends Controller
     {
         return view("admin/template/index");
     }
+    public function storeJournalInfos(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+    }
 
     /**
      * Show the form for creating a new resource.
