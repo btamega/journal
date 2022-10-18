@@ -207,3 +207,4 @@ Route::get('template/tables', function () {
 Route::get('template/tooltips', function () {
     return view('/admin/template/base/tooltips');
 });
+Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos'])->name('template.journal');
