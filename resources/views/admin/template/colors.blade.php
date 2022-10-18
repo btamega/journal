@@ -46,6 +46,52 @@
       // Bootstrap ID
       gtag('config', 'UA-118965717-5');
     </script>
+    <style>
+#btnModify{
+  display: none;
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color:#4169E1;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+</style>
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -304,7 +350,7 @@
                                 <p id="textOne" class="ml-auto p-2">Voici la visualisation</p>
                                </div>
                                 </div>
-                              <input id="changetextOne" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
+                              <input id="changetextOne" name="navBar" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
                             </div>
                             <div ><strong>Choisissez le thème de votre texte</strong></div>
                             <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
@@ -331,8 +377,10 @@
                               <input id="changetextThree" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary" id="btnSubmit" >Enregistrer</button>
+                          <button type="modify" class="btn btn-primary" id="btnModify" >Modifier</button>
                         </form>
+                        <div id="snackbar">L'étape du choix de couleur a été exécutée avec succès</div>
                       </div>
                       </div>
                     </div>
@@ -362,16 +410,35 @@
     var text2 = document.getElementById("textTwo");
     var input3 = document.getElementById("changetextThree");
     var text3 = document.getElementById("textThree");
+    var btn = document.getElementById("btnSubmit");
+    var btn2 = document.getElementById("btnModify");
 
        input1.addEventListener('change', function () {
       text1.style.color = this.value;
+      
           });
           input2.addEventListener('change', function () {
       text2.style.color = this.value;
+      
           });
           input3.addEventListener('change', function () {
       text3.style.color = this.value;
+      
           });
+
+          btn.addEventListener('click', function(){
+          input1.disabled = "true";
+          input2.disabled = "true";
+          input3.disabled = "true";
+          btn.style.display = "none";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+
+          
     </script>
   </body>
 </html>

@@ -16,6 +16,12 @@ class TemplateController extends Controller
     {
         return view("admin/template/index");
     }
+    public function postColor(Request $request)
+    {
+        // $color = $request->get("navBar");
+        // dd($color);
+        return view("admin/template/typography");
+    }
 
     /**
      * Show the form for creating a new resource.
