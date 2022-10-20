@@ -18,8 +18,10 @@ class TemplateController extends Controller
     }
     public function postColor(Request $request)
     {
-        // $color = $request->get("navBar");
-        // dd($color);
+        $color1 = $request->input('inputOne');
+        $color2  = $request->input('inputTwo');
+        $color3  = $request->input('inputThree');
+        dd($color1,$color2,$color3);
         return view("admin/template/typography");
     }
 

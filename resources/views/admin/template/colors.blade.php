@@ -65,28 +65,23 @@
   bottom: 30px;
   font-size: 17px;
 }
-
 #snackbar.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;} 
   to {bottom: 30px; opacity: 1;}
 }
-
 @keyframes fadein {
   from {bottom: 0; opacity: 0;}
   to {bottom: 30px; opacity: 1;}
 }
-
 @-webkit-keyframes fadeout {
   from {bottom: 30px; opacity: 1;} 
   to {bottom: 0; opacity: 0;}
 }
-
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
@@ -350,7 +345,7 @@
                                 <p id="textOne" class="ml-auto p-2">Voici la visualisation</p>
                                </div>
                                 </div>
-                              <input id="changetextOne" name="navBar" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
+                              <input  name="inputOne" type="color" class="form-control form-control-color"  value="#563d7c" title="Choose your color">  
                             </div>
                             <div ><strong>Choisissez le thème de votre texte</strong></div>
                             <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
@@ -362,7 +357,7 @@
                                 <p id="textTwo" class="ml-auto p-2">Voici la visualisation</p>
                                </div>
                                 </div>
-                              <input id="changetextTwo" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                              <input name="inputTwo" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
                             </div>
                             <div ><strong>Choisissez le thème de votre arrière plan</strong></div>
                             <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
@@ -374,7 +369,7 @@
                                 <p id="textThree" class="ml-auto p-2">Voici la visualisation</p>
                                </div>
                                 </div>
-                              <input id="changetextThree" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
+                              <input name="inputThree" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
                             </div>
                           </div>
                           <button type="submit" class="btn btn-primary" id="btnSubmit" >Enregistrer</button>
@@ -404,40 +399,36 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
     <script type="text/javascript"> 
-    var input1 = document.getElementById("changetextOne");
-    var text1 = document.getElementById("textOne");
-    var input2 = document.getElementById("changetextTwo");
-    var text2 = document.getElementById("textTwo");
-    var input3 = document.getElementById("changetextThree");
-    var text3 = document.getElementById("textThree");
-    var btn = document.getElementById("btnSubmit");
-    var btn2 = document.getElementById("btnModify");
-
-       input1.addEventListener('change', function () {
-      text1.style.color = this.value;
+    // var input1 = document.getElementById("changetextOne");
+    // var text1 = document.getElementById("textOne");
+    // var input2 = document.getElementById("changetextTwo");
+    // var text2 = document.getElementById("textTwo");
+    // var input3 = document.getElementById("changetextThree");
+    // var text3 = document.getElementById("textThree");
+    // var btn = document.getElementById("btnSubmit");
+    // var btn2 = document.getElementById("btnModify");
+    //    input1.addEventListener('change', function () {
+    //   text1.style.color = this.value;
+    //   console.log(this.value);
+    //       });
+    //       input2.addEventListener('change', function () {
+    //   text2.style.color = this.value;
       
-          });
-          input2.addEventListener('change', function () {
-      text2.style.color = this.value;
+    //       });
+    //       input3.addEventListener('change', function () {
+    //   text3.style.color = this.value;
       
-          });
-          input3.addEventListener('change', function () {
-      text3.style.color = this.value;
-      
-          });
-
-          btn.addEventListener('click', function(){
-          input1.disabled = "true";
-          input2.disabled = "true";
-          input3.disabled = "true";
-          btn.style.display = "none";
-          btn2.style.display = "block";
-          var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
-          });
-
-
+  //   //       });
+  //         btn.addEventListener('click', function(){
+  //         input1.disabled = "true";
+  //         input2.disabled = "true";
+  //         input3.disabled = "true";
+  //         btn.style.display = "none";
+  //         btn2.style.display = "block";
+  //         var x = document.getElementById("snackbar");
+  // x.className = "show";
+  // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+  //         });
           
     </script>
   </body>
