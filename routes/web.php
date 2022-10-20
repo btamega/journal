@@ -209,3 +209,4 @@ Route::get('template/tooltips', function () {
 });
 
 Route::post('/postColor',[TemplateController::class, 'postColor']);
+Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos'])->name('template.journal');

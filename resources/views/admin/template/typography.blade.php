@@ -37,6 +37,47 @@
     <link href="{{asset("template/css/examples.css")}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <style>
+      #btnModify{
+        display: none;
+      }
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color:#4169E1;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+      </style>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -277,87 +318,58 @@
             <div class="card-header">Informations de base</div>
             <div class="card-body">
               <p>Veuillez choisir le logo et le nom du journal</p>
-              {{-- <table class="table">
-                <thead>
-                  <tr>
-                    <th>Heading</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h1&gt;&lt;/h1&gt;</code></p>
-                    </td>
-                    <td><span class="h1">h1. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h2&gt;&lt;/h2&gt;</code></p>
-                    </td>
-                    <td><span class="h2">h2. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h3&gt;&lt;/h3&gt;</code></p>
-                    </td>
-                    <td><span class="h3">h3. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h4&gt;&lt;/h4&gt;</code></p>
-                    </td>
-                    <td><span class="h4">h4. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h5&gt;&lt;/h5&gt;</code></p>
-                    </td>
-                    <td><span class="h5">h5. Bootstrap heading</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><code class="highlighter-rouge">&lt;h6&gt;&lt;/h6&gt;</code></p>
-                    </td>
-                    <td><span class="h6">h6. Bootstrap heading</span></td>
-                  </tr>
-                </tbody>
-              </table> --}}
-              <form>
+              <form method="POST" action="{{route('template.journal')}}">
+                @csrf
                 <fieldset>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nom du journal</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName">
-                    {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nom du coordinateur principal</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur">
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur" required>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleSelect1">Pour quelle université</label>
-                    <select class="form-select" id="exampleSelect1">
-                      <option>Cadi Ayyad Marrakech</option>
-                      <option>Hassan I Settat</option>
-                      <option>AbdelMalek Essadi Tanger</option>
-                      <option>Mohamed V Rabat</option>
-                      <option>Hassan II Casablanca</option>
-                    </select>
-                  </div>
+                  <fieldset class="form-group">
+                    <legend class="mt-4">Organisation</legend>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="universityId" value="option1"  onclick="showOrganisation()">
+                      <label class="form-check-label" for="universityId">
+                        Université
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="universiy">
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio"  id="associationId" value="option2" onclick="showOrganisation()">
+                      <label class="form-check-label" for="associationId">
+                        Association
+                      </label>
+                    </div>
+                    
+                    <div class="form-group">
+                      <input style="display:none" type="text" class="form-control" id="textAssociation" name="association">
+                    </div>
+                  </fieldset>
                   <div class="form-group">
                     <label for="formFile" class="form-label">Logo du journal</label>
-                    <input class="form-control" type="file" id="formFile" name="logo">
+                    <input class="form-control" type="file" id="formFile" name="logo" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="formFile" class="form-label">Deuxième logo du journal</label>
+                    <input class="form-control" type="file" id="formFile" name="logo2">
+                    <small style="color: red" >Facultatif</small>
                   </div>
                   <fieldset class="form-group">
                     <legend class="mt-4">Disposition du menu</legend>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios1" value="Horizontal" checked="">
                       <label class="form-check-label" for="optionsRadios1">
                         Horizontal
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios2" value="Vertical">
                       <label class="form-check-label" for="optionsRadios2">
                         Vertical
                       </label>
@@ -372,37 +384,37 @@
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="menu" checked="" >
+                      <input class="form-check-input" type="checkbox" value="Home" id="flexCheckDefault" name="menu[]" checked="" required>
                       <label class="form-check-label" for="flexCheckDefault">
                         Home
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="about" checked="" name="menu">
+                      <input class="form-check-input" type="checkbox" value="About" id="about" checked="" name="menu[]">
                       <label class="form-check-label" for="about">
                         About
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="recommandation" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Recommandation" id="recommandation" name="menu[]">
                       <label class="form-check-label" for="recommandation">
                         Recommandation
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="archives" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Archives" id="archives" name="menu[]">
                       <label class="form-check-label" for="archives">
                         Archives
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lastIssues" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Last Issues" id="lastIssues" name="menu[]">
                       <label class="form-check-label" for="lastIssues">
                         Last Issues
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="contact" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Contact" id="contact" name="menu[]">
                       <label class="form-check-label" for="contact">
                         Contact
                       </label>
@@ -423,9 +435,10 @@
                       </div>
                     </div>
                   </fieldset> <br>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
                 </fieldset>
               </form>
+              <div id="snackbar">Vos données ont été enregistrées avec succès</div>
             </div>
           </div>
         </div>
@@ -445,6 +458,12 @@
     <script> 
     </script>
      <script type="text/javascript">
+     function submit() {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+       
+     }
       function showfield(){
         var text = document.getElementById("text");
         var checkBox = document.getElementById("myCheck");
@@ -452,6 +471,23 @@
           text.style.display = "block";
         } else {
           text.style.display = "none";
+        }
+      }
+      function showOrganisation(){
+        var text = document.getElementById("textUniversite");
+        var checkBox = document.getElementById("universityId");
+        var textAssociation = document.getElementById("textAssociation");
+        var checkBoxAssociation = document.getElementById("associationId");
+        if (checkBox.checked == true){
+          checkBoxAssociation.checked=false;
+          text.style.display = "block";
+          textAssociation.value='';
+          textAssociation.style.display = "none";
+        } else {
+          checkBoxAssociation.checked=true;
+          text.value='';
+          text.style.display = "none";
+          textAssociation.style.display = "block";
         }
       }
       function toggle(source) {
