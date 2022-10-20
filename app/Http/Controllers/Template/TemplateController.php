@@ -16,13 +16,22 @@ class TemplateController extends Controller
     {
         return view("admin/template/index");
     }
+    public function storeJournalInfos(Request $request)
+    {
+        $navbarColor = $request->session()->get("colorNavbar");
+        $data = $request->all();
+        dd($navbarColor,$data);
+    }
     public function postColor(Request $request)
     {
-        $color1 = $request->input('inputOne');
-        $color2  = $request->input('inputTwo');
-        $color3  = $request->input('inputThree');
-        dd($color1,$color2,$color3);
-        return view("admin/template/typography");
+        $NavigColor = $request->input('inputOne');
+        $TextColor  = $request->input('inputTwo');
+        $BackgroundColor  = $request->input('inputThree');
+        $request->session()->put('colorNavbar',$NavigColor );
+        $request->session()->put('colorText',$TextColor );
+        $request->session()->put('colorBody',$BackgroundColor );
+
+        return redirect("template/name");
     }
 
     /**

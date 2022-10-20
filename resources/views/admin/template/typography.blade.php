@@ -435,7 +435,9 @@
                       </div>
                     </div>
                   </fieldset> <br>
-                  <button type="submit" class="btn btn-primary" onclick="submit()">Submit</button>
+                  <button type="submit" class="btn btn-primary" id="btnSubmit"  >Enregistrer</button>
+                  <button type="modify" class="btn btn-primary" id="btnModify" >Modifier</button>
+                 
                 </fieldset>
               </form>
               <div id="snackbar">Vos données ont été enregistrées avec succès</div>
@@ -458,6 +460,20 @@
     <script> 
     </script>
      <script type="text/javascript">
+      let btn = document.getElementById("btnSubmit");
+      let btn2 = document.getElementById("btnModify");
+      btn.addEventListener('click', function(){
+          btn.style.display = "none";
+          // inputt1.disabled= "true";
+          // inputt2.disabled= "true";
+          // inputt3.disabled= "true";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+      
      function submit() {
       var x = document.getElementById("snackbar");
       x.className = "show";

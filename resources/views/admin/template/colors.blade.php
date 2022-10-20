@@ -342,10 +342,10 @@
                               <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
                                </div>
                                <div>
-                                <p id="textOne" class="ml-auto p-2">Voici la visualisation</p>
+                                <!-- <p id="textOne" class="ml-auto p-2">Voici la visualisation</p> -->
                                </div>
                                 </div>
-                              <input  name="inputOne" type="color" class="form-control form-control-color"  value="#563d7c" title="Choose your color">  
+                              <input  name="inputOne" type="color" class="input1"  value="#563d7c" title="Choose your color">  
                             </div>
                             <div ><strong>Choisissez le thème de votre texte</strong></div>
                             <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
@@ -354,10 +354,10 @@
                               <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
                                </div>
                                <div>
-                                <p id="textTwo" class="ml-auto p-2">Voici la visualisation</p>
+                                <!-- <p id="textTwo" class="ml-auto p-2">Voici la visualisation</p> -->
                                </div>
                                 </div>
-                              <input name="inputTwo" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                              <input name="inputTwo" type="color" class="input2" id="exampleColorInput" value="#563d7c" title="Choose your color">
                             </div>
                             <div ><strong>Choisissez le thème de votre arrière plan</strong></div>
                             <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
@@ -366,13 +366,13 @@
                               <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
                                </div>
                                <div>
-                                <p id="textThree" class="ml-auto p-2">Voici la visualisation</p>
+                                <!-- <p id="textThree" class="ml-auto p-2">Voici la visualisation</p> -->
                                </div>
                                 </div>
-                              <input name="inputThree" type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">  
+                              <input name="inputThree" type="color" class="input3" id="exampleColorInput" value="#563d7c" title="Choose your color">  
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-primary" id="btnSubmit" >Enregistrer</button>
+                          <button type="submit" class="btn btn-primary" id="btnSubmit"  >Enregistrer</button>
                           <button type="modify" class="btn btn-primary" id="btnModify" >Modifier</button>
                         </form>
                         <div id="snackbar">L'étape du choix de couleur a été exécutée avec succès</div>
@@ -399,14 +399,14 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
     <script type="text/javascript"> 
-    // var input1 = document.getElementById("changetextOne");
+    let inputt1 = document.getElementsByClassName("input1");
     // var text1 = document.getElementById("textOne");
-    // var input2 = document.getElementById("changetextTwo");
+    let inputt2 = document.getElementsByClassName("input2");
     // var text2 = document.getElementById("textTwo");
-    // var input3 = document.getElementById("changetextThree");
+    let inputt3 = document.getElementsByClassName("input3");
     // var text3 = document.getElementById("textThree");
-    // var btn = document.getElementById("btnSubmit");
-    // var btn2 = document.getElementById("btnModify");
+   let btn = document.getElementById("btnSubmit");
+   let btn2 = document.getElementById("btnModify");
     //    input1.addEventListener('change', function () {
     //   text1.style.color = this.value;
     //   console.log(this.value);
@@ -419,16 +419,24 @@
     //   text3.style.color = this.value;
       
   //   //       });
-  //         btn.addEventListener('click', function(){
-  //         input1.disabled = "true";
-  //         input2.disabled = "true";
-  //         input3.disabled = "true";
-  //         btn.style.display = "none";
-  //         btn2.style.display = "block";
-  //         var x = document.getElementById("snackbar");
+          btn.addEventListener('click', function(){
+          btn.style.display = "none";
+          inputt1.disabled= "true";
+          inputt2.disabled= "true";
+          inputt3.disabled= "true";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+  // const submit = () =>{
+  //   var x = document.getElementById("snackbar");
   // x.className = "show";
   // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
   //         });
+  // }
+       
           
     </script>
   </body>
