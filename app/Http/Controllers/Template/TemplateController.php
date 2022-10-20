@@ -19,7 +19,19 @@ class TemplateController extends Controller
     public function storeJournalInfos(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        
+        $this->validate($request, [
+            'journalName' => 'required|max:255',
+            'coordinateur' => 'required|max:255',
+            'universiy' => 'nullable|max:255',
+            'association' => 'nullable|max:255',
+            'logo' => 'required|image',
+            'logo2' => 'nullable|image',
+            'other' => 'nullable|max:255',
+        ]);
+        $request->session()->put('journalDatas', $data);
+       
+        return redirect('template/form');
     }
 
     /**
