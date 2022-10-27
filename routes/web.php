@@ -150,6 +150,7 @@ Route::get("/api/article/{idArticle}/auteurs", [ArchivesController::class, 'getA
 Route::get("/api/lastIssues", [ArchivesController::class, 'lastIssues']);
 Route::get("/api/recentArchives", [ArchivesController::class, 'archives']);
 Route::get("/api/archives-{annee1}-{annee2}", [ArchivesController::class, 'archives20102019']);
+Route::get("/api/maxVolume", [ArchivesController::class, 'volumesMinMax']);
 
 /**
  * @template 
@@ -207,4 +208,6 @@ Route::get('template/tables', function () {
 Route::get('template/tooltips', function () {
     return view('/admin/template/base/tooltips');
 });
-Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos'])->name('template.journal');
+Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos']);
+Route::get("/template/menu-horizontal", [TemplateController::class, 'getMenuHorizontal'])->name("menuHorizontal");
+Route::get("/template/menu-vertical", [TemplateController::class, 'getMenuVertical'])->name("menuVertical");

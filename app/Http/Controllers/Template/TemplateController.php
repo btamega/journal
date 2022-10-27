@@ -16,22 +16,38 @@ class TemplateController extends Controller
     {
         return view("admin/template/index");
     }
+    public function getMenuHorizontal(Request $request)
+    {
+        $data = $request->session()->get('journalDatas');
+        $menus = $data["menu"];
+        // dd($menus["menu"][0]);
+        return view('/admin/template/menu-horizontal')->with('menus',$menus);
+    }
+    public function getMenuVertical()
+    {
+        return view('/admin/template/menu-vertical');
+    }
     public function storeJournalInfos(Request $request)
     {
         $data = $request->all();
-        
-        $this->validate($request, [
-            'journalName' => 'required|max:255',
-            'coordinateur' => 'required|max:255',
-            'universiy' => 'nullable|max:255',
-            'association' => 'nullable|max:255',
-            'logo' => 'required|image',
-            'logo2' => 'nullable|image',
-            'other' => 'nullable|max:255',
-        ]);
+        // dd($data);
+        // $this->validate($request, [
+        //     'journalName' => 'required|max:255',
+        //     'coordinateur' => 'required|max:255',
+        //     'universiy' => 'nullable|max:255',
+        //     'association' => 'nullable|max:255',
+        //     'logo' => 'required|image',
+        //     'logo2' => 'nullable|image',
+        //     'other' => 'nullable|max:255',
+        // ]);
         $request->session()->put('journalDatas', $data);
-       
-        return redirect('template/form');
+        if ($request->dispositionMenu=="Horizontal") {
+            return redirect()->route('menuHorizontal');
+        } else {
+            return redirect()->route('menuVertical');
+        }
+        
+        
     }
 
     /**

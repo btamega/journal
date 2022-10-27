@@ -50,6 +50,15 @@ class ArchivesController extends Controller
         $volumes=Volumes::with(['fascicules'])->whereBetween('Année',['2020',$maxValue-1]);
         return ArchiveResource::collection($volumes->paginate(20))->response();
     }
+    public function volumesMinMax()
+    {
+        $maxValue = Volumes::max('Année');
+        return response()->json(
+            [
+                'maxVolume' =>$maxValue-1,
+            ]
+            );
+    }
     public function getFascicules($id)
     {
         $fascicules=Fascicules::where('id_fascicule',$id)

@@ -128,6 +128,8 @@
         to {bottom: 0; opacity: 0;}
       }
       </style>
+      
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -348,141 +350,62 @@
             <ol class="breadcrumb my-0 ms-2">
               <li class="breadcrumb-item"><a href="{{URL::to("admin/template")}}">Home</a>
               </li>
-              <li class="breadcrumb-item active"><span>Journal</span></li>
+              <li class="breadcrumb-item active"><span>Menus</span></li>
             </ol>
           </nav>
         </div>
       </header>
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          <div class="card mb-4">
-            <div class="card-header">Informations de base</div>
-            <div class="card-body">
-              <p>Veuillez choisir le logo et le nom du journal</p>
-              <form method="POST" action="{{ URL::to('/storeJournalData') }}">
-                @csrf
-                <fieldset>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nom du journal</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Nom du coordinateur principal</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur" required>
-                  </div>
-                  <fieldset class="form-group">
-                    <legend class="mt-4">Organisation</legend>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" id="universityId" value="option1"  onclick="showOrganisation()">
-                      <label class="form-check-label" for="universityId">
-                        Université
-                      </label>
-                    </div>
-                    <div class="form-group">
-                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="universiy">
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio"  id="associationId" value="option2" onclick="showOrganisation()">
-                      <label class="form-check-label" for="associationId">
-                        Association
-                      </label>
-                    </div>
-                    
-                    <div class="form-group">
-                      <input style="display:none" type="text" class="form-control" id="textAssociation" name="association">
-                    </div>
-                  </fieldset>
-                  <div class="form-group">
-                    <label for="formFile" class="form-label">Logo du journal</label>
-                    <input class="form-control" type="file" id="formFile" name="logo" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="formFile" class="form-label">Deuxième logo du journal</label>
-                    <input class="form-control" type="file" id="formFile" name="logo2">
-                    <small style="color: red" >Facultatif</small>
-                  </div>
-                  <fieldset class="form-group">
-                    <legend class="mt-4">Disposition du menu</legend>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios1" value="Horizontal" checked="">
-                      <label class="form-check-label" for="optionsRadios1">
-                        Horizontal
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="dispositionMenu" id="optionsRadios2" value="Vertical">
-                      <label class="form-check-label" for="optionsRadios2">
-                        Vertical
-                      </label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="form-group">
-                    <legend>Choix des menus</legend>
-                    <div class="form-check">
-                      <input class="form-check-input" id="all" type="checkbox" onclick="toggle(this)" />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Tous
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Home" id="flexCheckDefault" name="menu[]" checked="" required>
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Home
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="About" id="about" checked="" name="menu[]">
-                      <label class="form-check-label" for="about">
-                        About
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Recommandation" id="recommandation" name="menu[]">
-                      <label class="form-check-label" for="recommandation">
-                        Recommandation
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Archives" id="archives" name="menu[]">
-                      <label class="form-check-label" for="archives">
-                        Archives
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Last Issues" id="lastIssues" name="menu[]">
-                      <label class="form-check-label" for="lastIssues">
-                        Last Issues
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Contact" id="contact" name="menu[]">
-                      <label class="form-check-label" for="contact">
-                        Contact
-                      </label>
-                    </div>
-                  </fieldset>
-                  <fieldset class="form-group">
-                    <div class="form-group row">
-                      <div class="col-md-12">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="myCheck" name="other" onclick="showfield()">
-                          <label class="form-check-label" for="other">
-                            Autre
-                          </label>
-                        </div>
-                        <div class="form-group">
-                          <input style="display:none" type="text" class="form-control" id="text" name="other">
+            <div class="row">
+              <div class="col-12">
+                <div class="card mb-4">
+                  <div class="card-header"><strong>Veuillez remplir les champs ci-dessous</strong></div>
+                  <div class="card-body">
+                    <p class="text-medium-emphasis small">The tabs plugin also works with pills.</p>
+                    <div class="example">
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-546" role="tab">
+                            <svg class="icon me-2">
+                              <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-media-play"></use>
+                            </svg>Vos menus</a></li>
+                      </ul>
+                      <div class="tab-content rounded-bottom">
+                        <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-546">
+                          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            @foreach($menus as $key => $value)
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-{{ $value }}-tab" data-coreui-toggle="pill" data-coreui-target="#pills-{{ $value }}" type="button" role="tab" aria-controls="pills-{{ $value }}" aria-selected="true">{{ $value }}</button>
+                                </li>
+                            @endforeach
+                          </ul>
+                          <div class="tab-content" id="pills-tabContent">
+                            @foreach($menus as $key => $value)
+                                @if($condition)
+                                    
+                                @endif
+                                <div class="tab-pane fade show active" id="pills-{{ $value }}" role="tabpanel" aria-labelledby="pills-{{ $value }}-tab">
+                                <p>Placeholder content for the tab panel. This one relates to the home tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+                                </div>
+                            @endforeach
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <form action="">
+                                    <textarea name="chahada" id="summernote" cols="30" rows="10" required></textarea>
+                                </form>
+                              <p>Placeholder content for the tab panel. This one relates to the profile tab. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                              <p>Placeholder content for the tab panel. This one relates to the contact tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </fieldset> <br>
-                  <button type="submit" class="btn btn-primary" onclick="submit()" id="btnSubmit">Submit</button>
-                </fieldset>
-              </form>
-              <div id="snackbar">Vos données ont été enregistrées avec succès</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
       </div>
       <footer class="footer">
         <div>Copyrights&copy; 2022 IRISI.</div>
@@ -499,12 +422,7 @@
     <script> 
     </script>
      <script type="text/javascript">
-     let btn = document.getElementById("btnSubmit");
-     btn.addEventListener('click', function(){
-      var x = document.getElementById("snackbar");
-  x.className = "show";
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
-          });
+     
       function showfield(){
         var text = document.getElementById("text");
         var checkBox = document.getElementById("myCheck");
@@ -546,5 +464,24 @@
         
       }
       </script>
+       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+       <script>
+           $('#summernote').summernote({
+             placeholder: 'Description ...',
+             tabsize: 2,
+             height: 300,
+             toolbar: [
+               ['style', ['style']],
+               ['fontsize', ['fontsize']],
+               ['fontname', ['fontname']],
+               ['font', ['bold', 'underline', 'clear']],
+               ['color', ['color']],
+               ['para', ['ul', 'ol', 'paragraph']],
+               ['table', ['table']],
+               ['insert', ['link']],
+               ['view', ['fullscreen']]
+             ]
+           });
+         </script>
   </body>
 </html>
