@@ -20,12 +20,14 @@ class TemplateController extends Controller
     {
         $data = $request->session()->get('journalDatas');
         $menus = $data["menu"];
-        // dd($menus["menu"][0]);
+        $other = $data["other"];
         return view('/admin/template/menu-horizontal')->with('menus',$menus);
     }
-    public function getMenuVertical()
+    public function getMenuVertical(Request $request)
     {
-        return view('/admin/template/menu-vertical');
+        $data = $request->session()->get('journalDatas');
+        $menus = $data["menu"];
+        return view('/admin/template/menu-vertical')->with('menus',$menus);
     }
     public function storeJournalInfos(Request $request)
     {
@@ -68,7 +70,47 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $data = $request->session()->get('archives');
+        dd($data);
+        return redirect()->back();
+
+    }
+    public function storeArchives(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('archives', $data);
+
+    }
+    public function storeRecommandation(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('recommandation', $data);
+
+    }
+    public function storeAbout(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('about', $data);
+
+    }
+    public function storeHome(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('home', $data);
+
+    }
+    public function storeLastIssues(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('lastIssues', $data);
+
+    }
+    public function storeContact(Request $request)
+    {
+        $data = $request->all();
+        $request->session()->put('contact', $data);
+
     }
 
     /**

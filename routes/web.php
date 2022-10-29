@@ -211,3 +211,10 @@ Route::get('template/tooltips', function () {
 Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos']);
 Route::get("/template/menu-horizontal", [TemplateController::class, 'getMenuHorizontal'])->name("menuHorizontal");
 Route::get("/template/menu-vertical", [TemplateController::class, 'getMenuVertical'])->name("menuVertical");
+Route::post("/template/menu", [TemplateController::class, 'store'])->name("sendData");
+Route::post("/template/menuContact", [TemplateController::class, 'storeContact'])->name("sendContactData");
+Route::post("/template/menuArchives", [TemplateController::class, 'storeArchives'])->name("sendArchivesData");
+Route::post("/template/menuRecommandation", [TemplateController::class, 'storeRecommandation'])->name("sendRecommandationData");
+Route::post("/template/menuAbout", [TemplateController::class, 'storeAbout'])->name("sendAboutData");
+Route::post("/template/menuHome", [TemplateController::class, 'storeHome'])->name("sendHomeData");
+Route::post("/template/menuLastIssues", [TemplateController::class, 'storeLastIssues'])->name("sendLastIssuesData");

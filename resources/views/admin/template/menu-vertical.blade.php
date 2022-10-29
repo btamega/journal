@@ -9,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Informations du journal</title>
+    <title>Menus du journal</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset("template/assets/favicon/apple-icon-57x57.png")}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset("template/assets/favicon/apple-icon-60x60.png")}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset("template/assets/favicon/apple-icon-72x72.png")}}">
@@ -354,7 +354,42 @@
         </div>
       </header>
       <div class="body flex-grow-1 px-3">
-        
+        <div class="container-lg">
+          <div class="row">
+            <div class="col-12">
+              <div class="card mb-4">
+                <div class="tab-content rounded-bottom">
+                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-133">
+                    <div class="d-flex align-items-start">
+                      
+                      <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        @foreach($menus as $key => $value)
+                          <button class="nav-link" id="v-pills-{{$value}}-tab" data-coreui-toggle="pill" data-coreui-target="#v-pills-{{$value}}" type="button" role="tab" aria-controls="v-pills-{{$value}}" aria-selected="false">{{$value}}</button>
+                        @endforeach
+                      </div>
+                      <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade" id="v-pills-Home" role="tabpanel" aria-labelledby="v-pills-Home-tab">
+                          <p>Placeholder content for the tab panel. This one relates to the home tab. Saw you downtown singing the Blues. Watch you circle the drain. Why don't you let me stop by? Heavy is the head that wears the crown. Yes, we make angels cry, raining down on earth from up above. Wanna see the show in 3D, a movie. Do you ever feel, feel so paper thin. It’s a yes or no, no maybe.</p>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-About" role="tabpanel" aria-labelledby="v-pills-About-tab">
+                          <p>Placeholder content for the tab panel. This one relates to the profile tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-Recommandation" role="tabpanel" aria-labelledby="v-pills-Recommandation-tab">
+                          <p>Placeholder content for the tab panel. This one relates to the messages tab. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+                        </div>
+                        <div class="tab-pane fade active show" id="v-pills-Contact" role="tabpanel" aria-labelledby="v-pills-Contact-tab">
+                          <p>Placeholder content for the tab panel. This one relates to the settings tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+                        </div>
+
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <footer class="footer">
         <div>Copyrights&copy; 2022 IRISI.</div>
