@@ -359,7 +359,7 @@
             <div class="card-header">Informations de base</div>
             <div class="card-body">
               <p>Veuillez choisir le logo et le nom du journal</p>
-              <form method="POST" action="{{ URL::to('/storeJournalData') }}">
+              <form method="POST" action="{{ URL::to('/storeJournalData') }}" id="myForm">
                 @csrf
                 <fieldset>
                   <div class="form-group">
@@ -499,8 +499,12 @@
     <script> 
     </script>
      <script type="text/javascript">
+     function submit() {
+      this.disabled=true;
+     }
      let btn = document.getElementById("btnSubmit");
      btn.addEventListener('click', function(){
+      
       var x = document.getElementById("snackbar");
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
