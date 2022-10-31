@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <title>Menus du journal</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset("template/assets/favicon/apple-icon-57x57.png")}}">
@@ -384,49 +385,61 @@
                           </ul>
                           <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade" id="pills-Home" role="tabpanel" aria-labelledby="pills-Home-tab">
-                                <form action="{{route("sendHomeData")}}" method="POST" id="homeForm">
-                                  @csrf
+                                <form id="homeForm">
                                     <textarea name="homeText" id="summernoteHome" cols="30" rows="10"></textarea>
-                                    <button class="btn btn-success" type="submit" onclick="submitHome()">Envoyer</button>
+                                    <button class="btn btn-success" type="button" onclick="submitHome()">Envoyer</button>
                                 </form>
                               <p id="home" style="text-align: center"></p>
                             </div>
                             <div class="tab-pane fade" id="pills-About" role="tabpanel" aria-labelledby="pills-About-tab">
-                              <form action="{{route("sendAboutData")}}" method="POST" id="aboutForm">
-                                @csrf
+                              <form id="aboutForm">
                                   <textarea name="aboutText" id="summernoteAbout" cols="30" rows="10"></textarea>
-                                  <button class="btn btn-success" type="submit" onclick="submitAbout()">Envoyer</button>
+                                  <button class="btn btn-success" type="button" onclick="submitAbout()">Envoyer</button>
                               </form>
                               <p id="about" style="text-align: center"></p>
                             </div>
                             <div class="tab-pane fade" id="pills-Recommandation" role="tabpanel" aria-labelledby="pills-Recommandation-tab">
-                              <form action="{{route("sendRecommandationData")}}" method="POST" id="recommandationForm">
-                                @csrf
+                              <form id="recommandationForm">
                                   <textarea name="recommandationText" id="summernoteRecommandation" cols="30" rows="10"></textarea>
-                                  <button class="btn btn-success" type="submit" onclick="submitRecommandation()">Envoyer</button>
+                                  <button class="btn btn-success" type="button" onclick="submitRecommandation()">Envoyer</button>
                               </form>
                               <p id="recommandation" style="text-align: center"></p>
                             </div>
                             <div class="tab-pane fade" id="pills-Archives" role="tabpanel" aria-labelledby="pills-Archives-tab">
-                              <form action="{{route("sendArchivesData")}}" method="POST" id="archivesForm" style="display: block">
-                                @csrf
+                              <form id="archivesForm">
                                   <textarea name="archivesText" id="summernoteArchives" cols="30" rows="10"></textarea>
-                                  <button class="btn btn-success" type="submit" onclick="submitArchives()" id="sendArchives">Envoyer</button>
+                                  <button class="btn btn-success" type="button" onclick="submitArchives()" id="sendArchives">Envoyer</button>
                               </form>
                               <p id="archives" style="text-align: center"></p>
                             </div>
                             <div class="tab-pane fade" id="pills-Contact" role="tabpanel" aria-labelledby="pills-Contact-tab">
-                              <form action="{{route("sendContactData")}}" method="POST" id="contactForm">
-                                @csrf
+                              <form id="contactForm">
                                   <textarea name="contactText" id="summernoteContact" cols="30" rows="10"></textarea>
-                                  <button class="btn btn-success" type="submit" onclick="submitContact()" id="sendContact">Envoyer</button>
+                                  <button class="btn btn-success" type="button" onclick="submitContact()" id="sendContact">Envoyer</button>
                               </form>
                               <p id="contact" style="text-align: center"></p>
                             </div>
-                            <form action="{{route("sendData")}}" method="POST">
-                              @csrf
-                              <button class="btn btn-info" type="submit" id="confirm" style="display: none">Confirmer</button>
-                              <button class="btn btn-danger" type="reset" style="display: none" id="cancel">Annuler</button>
+                            <div class="tab-pane fade" id="pills-LastIssues" role="tabpanel" aria-labelledby="pills-LastIssues-tab">
+                              <form id="lastIssuesForm">
+                                  <textarea name="lastIssuesText" id="summernoteLastIssues" cols="30" rows="10"></textarea>
+                                  <button class="btn btn-success" type="button" onclick="submitLastIssues()" id="sendLastIssues">Envoyer</button>
+                              </form>
+                              <p id="contact" style="text-align: center"></p>
+                            </div>
+                            <form>
+                              <div class="row">
+                                <div class="col-sm-8"></div>
+                                <div class="col-sm-4">
+                                  <div class="row">
+                                    <div class="col-sm-6">
+                                      <button class="btn btn-info" type="button" id="confirm" onclick="store()">Confirmer</button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <button class="btn btn-danger" type="reset" id="cancel">Annuler</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </form>
                             <div id="snackbar">Vos données ont été enregistrées avec succès</div>
                           </div>
@@ -451,13 +464,14 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
-    </script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+       {{-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> --}}
+       
        <script>
           function checkInputs() {
             var isValid = true;
-            $('textarea').filter('[required]').each(function() {
+            $('textarea').each(function() {
               if ($(this).val() === '') {
                 // $('#confirm').prop('disabled', true)
                 isValid = false;
@@ -465,76 +479,149 @@
               }
             });
             if(isValid) {
+              window.alert('success filled')
               document.getElementById("confirm").style.display="block";
               document.getElementById("cancel").style.display="block";
-              // $('#confirm').style.display="block";
             }
             return isValid;
           }
           function submitHome() {
-            $('#homeForm').submit(function(e){
-
-              checkInputs();
-              e.preventDefault();
-              $(this).find(':button[type=submit]').prop('disabled', true);
+            // checkInputs();
+            var contenu = document.getElementById("summernoteHome").value;
+              let _token   = $('meta[name="csrf-token"]').attr('content');
+              $.ajax({
+                type: "POST",
+                url: "/template/menuHome",
+                data: {
+                  homeText:contenu,
+                  _token: _token},  
+                success: function (data){
+                  $(this).find(':button[type=submit]').prop('disabled', true);
               document.getElementById("homeForm").style.display="none";
               document.getElementById("home").innerHTML= "Form submitted";
-              if (isEveryInputEmpty==false) {
-                
-              } else {
-                
-              }
               var x = document.getElementById("snackbar");
               x.className = "show";
               setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
             });
           }
+          function store() {
+            let _token   = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                type: "POST",
+                url: "/template/menu",
+                data: {
+                  _token: _token},  
+                success: function (data){
+                  window.alert('success filled')
+                  if (window.confirm('Do you want to continue?'))
+                    {
+                      window.location.href = "/admin/colors"
+                    }
+                    else
+                    {
+                      window.location.href = "/admin/template"
+                    }
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
+              })
+            
+          }
           function submitAbout() {
-            $('#aboutForm').submit(function(e){
-              checkInputs();
-              e.preventDefault();
-              $(this).find(':button[type=submit]').prop('disabled', true);
-              document.getElementById("aboutForm").style.display="none";
-              document.getElementById("about").innerHTML= "Form submitted";
-              var x = document.getElementById("snackbar");
-              x.className = "show";
-              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            // checkInputs();
+            var contenu = document.getElementById("summernoteAbout").value;
+              let _token   = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                type: "POST",
+                url: "/template/menuAbout",
+                data: {
+                  aboutText:contenu,
+                  _token: _token},  
+                success: function (data){
+                  $(this).find(':button[type=submit]').prop('disabled', true);
+                  document.getElementById("aboutForm").style.display="none";
+                  document.getElementById("about").innerHTML= "Form submitted";
+                  var x = document.getElementById("snackbar");
+                  x.className = "show";
+                  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
             });
           }
           function submitRecommandation() {
-            $('#recommandationForm').submit(function(e){
-              checkInputs();
-              e.preventDefault();
-              $(this).find(':button[type=submit]').prop('disabled', true);
-              document.getElementById("recommandationForm").style.display="none";
-              document.getElementById("recommandation").innerHTML= "Form submitted";
-              var x = document.getElementById("snackbar");
-              x.className = "show";
-              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            // checkInputs();
+            var contenu = document.getElementById("summernoteRecommandation").value;
+              let _token   = $('meta[name="csrf-token"]').attr('content');
+              $.ajax({
+                type: "POST",
+                url: "/template/menuRecommandation",
+                data: {
+                  homeText:contenu,
+                  _token: _token},  
+                success: function (data){
+                  $(this).find(':button[type=submit]').prop('disabled', true);
+                  document.getElementById("recommandationForm").style.display="none";
+                  document.getElementById("recommandation").innerHTML= "Form submitted";
+                  var x = document.getElementById("snackbar");
+                  x.className = "show";
+                  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
             });
           }
           function submitArchives() {
-            $('#archivesForm').submit(function(e){
-              checkInputs();
-              e.preventDefault();
-              $(this).find(':button[type=submit]').prop('disabled', true);
-              document.getElementById("archivesForm").style.display="none";
-              document.getElementById("archives").innerHTML= "Form submitted";
-              var x = document.getElementById("snackbar");
-              x.className = "show";
-              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            // checkInputs();
+            var contenu = document.getElementById("summernoteArchives").value;
+              let _token   = $('meta[name="csrf-token"]').attr('content');
+              $.ajax({
+                type: "POST",
+                url: "/template/menuArchives",
+                data: {
+                  homeText:contenu,
+                  _token: _token},  
+                success: function (data){
+                  $(this).find(':button[type=submit]').prop('disabled', true);
+                  document.getElementById("archivesForm").style.display="none";
+                  document.getElementById("archives").innerHTML= "Form submitted";
+                  var x = document.getElementById("snackbar");
+                  x.className = "show";
+                  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
             });
           }
           function submitContact() {
-            $('#contactForm').submit(function(e){
-              checkInputs();
-              e.preventDefault();
-              $(this).find(':button[type=submit]').prop('disabled', true);
-              document.getElementById("contactForm").style.display="none";
-              document.getElementById("contact").innerHTML= "Form submitted";
-              var x = document.getElementById("snackbar");
-              x.className = "show";
-              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            // checkInputs();
+            var contenu = document.getElementById("summernoteContact").value;
+              let _token   = $('meta[name="csrf-token"]').attr('content');
+              $.ajax({
+                type: "POST",
+                url: "/template/menuContact",
+                data: {
+                  homeText:contenu,
+                  _token: _token},  
+                success: function (data){
+                  $(this).find(':button[type=submit]').prop('disabled', true);
+                  document.getElementById("contactForm").style.display="none";
+                  document.getElementById("contact").innerHTML= "Form submitted";
+                  var x = document.getElementById("snackbar");
+                  x.className = "show";
+                  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+                },
+                error: function() {
+                  window.alert('There was some error performing the AJAX call!');
+              }
             });
             
           }

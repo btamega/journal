@@ -33,7 +33,7 @@ class TemplateController extends Controller
     {
         $data = $request->all();
         // dd($data);
-        // $this->validate($request, [
+        // $request->validate([
         //     'journalName' => 'required|max:255',
         //     'coordinateur' => 'required|max:255',
         //     'universiy' => 'nullable|max:255',
@@ -71,9 +71,9 @@ class TemplateController extends Controller
     public function store(Request $request)
     {
         
-        $data = $request->session()->get('archives');
-        dd($data);
-        return redirect()->back();
+        $data = $request->session()->all();
+        // dd($data);
+        return view("admin/template/index");
 
     }
     public function storeArchives(Request $request)
