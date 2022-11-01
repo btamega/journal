@@ -274,93 +274,41 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="card mb-4">
-            <div class="card-header"><strong>Collapse</strong></div>
+            <div class="card-header"><strong>Export</strong></div>
             <div class="card-body">
-              <p class="text-medium-emphasis small">You can use a link with the <code>href</code> attribute, or a button with the <code>data-coreui-target</code> attribute. In both samples, the <code>data-coreui-toggle="collapse""</code> is required.</p>
+              <p class="text-medium-emphasis small">Veuillez choisir un mode d'exportation du projet </p>
               <div class="example">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-750" role="tab">
                       <svg class="icon me-2">
                         <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-media-play"></use>
                       </svg>Preview</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/components/collapse/#example" target="_blank">
-                      <svg class="icon me-2">
-                        <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-code"></use>
-                      </svg>Code</a></li>
                 </ul>
                 <div class="tab-content rounded-bottom">
                   <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-750">
-                    <p><a class="btn btn-primary" data-coreui-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Link with href</a>
-                      <button class="btn btn-primary" type="button" data-coreui-toggle="collapse" data-coreui-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Button with data-target</button>
+                    <p><a href="{{URL::to('/export')}}" class="btn btn-primary" >ZIP Folder</a>
+                      <a  class="btn btn-primary"  data-coreui-toggle="collapse" data-coreui-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Other</a>
                     </p>
                     <div class="collapse" id="collapseExample">
-                      <div class="card mb-4 card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header"><strong>Collapse</strong><span class="small ms-1">Horizontal</span></div>
-            <div class="card-body">
-              <p class="text-medium-emphasis small">The collapse plugin also supports horizontal collapsing. Add the <code>.collapse-horizontal</code> modifier class to transition the <code>width</code> instead of <code>height</code> and set a <code>width</code> on the immediate child element. Feel free to write your own custom Sass, use inline styles, or use our <a href="/docs/4.1/utilities/sizing/">width utilities</a>.</p>
-              <div class="example">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-466" role="tab">
-                      <svg class="icon me-2">
-                        <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-media-play"></use>
-                      </svg>Preview</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/components/collapse/#horizontal" target="_blank">
-                      <svg class="icon me-2">
-                        <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-code"></use>
-                      </svg>Code</a></li>
-                </ul>
-                <div class="tab-content rounded-bottom">
-                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-466">
-                    <p>
-                      <button class="btn btn-primary" type="button" data-coreui-toggle="collapse" data-coreui-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">Toggle width collapse</button>
-                    </p>
-                    <div style="min-height: 120px;">
-                      <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                        <div class="card card-body" style="width: 300px;">This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.</div>
+                      <div class="card mb-4 card-body">
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header"><strong>Collapse</strong><span class="small ms-1">multiple targets</span></div>
-            <div class="card-body">
-              <p class="text-medium-emphasis small">A <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> can show and hide multiple elements by referencing them with a selector in its <code>href</code> or <code>data-coreui-target</code> attribute. Multiple <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code> can show and hide an element if they each reference it with their <code>href</code> or <code>data-coreui-target</code> attribute</p>
-              <div class="example">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-437" role="tab">
-                      <svg class="icon me-2">
-                        <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-media-play"></use>
-                      </svg>Preview</a></li>
-                  <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/components/collapse/#multiple-targets" target="_blank">
-                      <svg class="icon me-2">
-                        <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-code"></use>
-                      </svg>Code</a></li>
-                </ul>
-                <div class="tab-content rounded-bottom">
-                  <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-437">
-                    <p><a class="btn btn-primary" data-coreui-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-                      <button class="btn btn-primary" type="button" data-coreui-toggle="collapse" data-coreui-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle second element</button>
-                      <button class="btn btn-primary" type="button" data-coreui-toggle="collapse" data-coreui-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-                    </p>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6">
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-                          <div class="card mb-4 card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6">
-                        <div class="collapse multi-collapse" id="multiCollapseExample2">
-                          <div class="card mb-4 card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</div>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                            <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body" id="fileDownloadForm" >
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                          </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-coreui-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="button">Save changes</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -383,8 +331,29 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
-    </script>
+    <script>
+      $(function () {
+          $(document).ready(function () {
+              $('#fileDownloadForm').ajax({
+                  type: "GET",
+                  url: "/export",
+                  beforeSend: function () {
+                      window.alert("before send")
+                      var percentage = '0';
+                  },
+                  uploadProgress: function (event, position, total, percentComplete) {
+                      var percentage = percentComplete;
+                      $('.progress .progress-bar').css("width", percentage+'%', function() {
+                        return $(this).attr("aria-valuenow", percentage) + "%";
+                      })
+                  },
+                  complete: function (xhr) {
+                      console.log('File has uploaded');
+                  }
+              });
+          });
+      });
+  </script>
      <script type="text/javascript">
       function showfield(){
         var text = document.getElementById("text");

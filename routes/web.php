@@ -220,3 +220,7 @@ Route::post("/template/menuRecommandation", [TemplateController::class, 'storeRe
 Route::post("/template/menuAbout", [TemplateController::class, 'storeAbout'])->name("sendAboutData");
 Route::post("/template/menuHome", [TemplateController::class, 'storeHome'])->name("sendHomeData");
 Route::post("/template/menuLastIssues", [TemplateController::class, 'storeLastIssues'])->name("sendLastIssuesData");
+Route::get("/export", [TemplateController::class, 'export']);
+Route::get("/notifications/modals", function () {
+    return view('/admin/template/notifications/modals');
+});

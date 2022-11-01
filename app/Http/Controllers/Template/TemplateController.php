@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Template;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\File;
+// use Illuminate\Support\Facades\Storage;
 class TemplateController extends Controller
 {
     /**
@@ -15,6 +16,60 @@ class TemplateController extends Controller
     public function index()
     {
         return view("admin/template/index");
+    }
+    public function recurseCopy(
+        string $sourceDirectory,
+        string $destinationDirectory,
+        string $childFolder = ''
+    ) {
+        $directory = opendir($sourceDirectory);
+    
+        if (is_dir($destinationDirectory) === false) {
+            mkdir($destinationDirectory);
+        }
+    
+        if ($childFolder !== '') {
+            if (is_dir("$destinationDirectory/$childFolder") === false) {
+                mkdir("$destinationDirectory/$childFolder");
+            }
+    
+            while (($file = readdir($directory)) !== false) {
+                if ($file === '.' || $file === '..') {
+                    continue;
+                }
+    
+                if (is_dir("$sourceDirectory/$file") === true) {
+                    $this->recurseCopy("$sourceDirectory/$file", "$destinationDirectory/$childFolder/$file");
+                } else {
+                    copy("$sourceDirectory/$file", "$destinationDirectory/$childFolder/$file");
+                }
+            }
+    
+            closedir($directory);
+    
+            return;
+        }
+    
+        while (($file = readdir($directory)) !== false) {
+            if ($file === '.' || $file === '..') {
+                continue;
+            }
+    
+            if (is_dir("$sourceDirectory/$file") === true) {
+                $this->recurseCopy("$sourceDirectory/$file", "$destinationDirectory/$file");
+            }
+            else {
+                copy("$sourceDirectory/$file", "$destinationDirectory/$file");
+            }
+        }
+    
+        closedir($directory);
+    }
+    public function export(Request $request)
+    {   set_time_limit(0);
+        $controller = new TemplateController();
+        $controller->recurseCopy("C:/xampp/htdocs/Journal","C:/xampp/htdocs/NewJournal");
+        
     }
     public function getMenuHorizontal(Request $request)
     {

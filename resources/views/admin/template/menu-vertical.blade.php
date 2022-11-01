@@ -27,6 +27,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{asset("template/assets/favicon/ms-icon-144x144.png")}}">
     <meta name="theme-color" content="#ffffff">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Vendors styles-->
     <link rel="stylesheet" href="{{asset("template/node_modules/vendors/simplebar/css/simplebar.css")}}">
     <link rel="stylesheet" href="{{asset("template/css/vendors/simplebar.css")}}">
@@ -37,6 +38,9 @@
     <link href="{{asset("template/css/examples.css")}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <style>
       #btnModify{
         display: none;
@@ -361,28 +365,67 @@
                 <div class="tab-content rounded-bottom">
                   <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-133">
                     <div class="d-flex align-items-start">
-                      
                       <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         @foreach($menus as $key => $value)
-                          <button class="nav-link" id="v-pills-{{$value}}-tab" data-coreui-toggle="pill" data-coreui-target="#v-pills-{{$value}}" type="button" role="tab" aria-controls="v-pills-{{$value}}" aria-selected="false">{{$value}}</button>
+                          <button onclick="setId('{{ $value }}')" class="nav-link" id="pills-{{ $value }}-tab" data-coreui-toggle="pill" data-coreui-target="#pills-{{ $value }}" type="button" role="tab" aria-controls="pills-{{ $value }}" aria-selected="true">{{ $value }}</button>
                         @endforeach
+                        <br>
+                        <form>
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <button class="btn btn-info" type="button" id="confirm" onclick="store()">Confirmer</button>
+                            </div>
+                            <div class="col-sm-6">
+                              <button class="btn btn-danger" type="reset" id="cancel">Annuler</button>
+                            </div>
+                          </div>
+                        </form>
                       </div>
                       <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade" id="v-pills-Home" role="tabpanel" aria-labelledby="v-pills-Home-tab">
-                          <p>Placeholder content for the tab panel. This one relates to the home tab. Saw you downtown singing the Blues. Watch you circle the drain. Why don't you let me stop by? Heavy is the head that wears the crown. Yes, we make angels cry, raining down on earth from up above. Wanna see the show in 3D, a movie. Do you ever feel, feel so paper thin. It’s a yes or no, no maybe.</p>
+                        <div class="tab-pane fade" id="pills-Home" role="tabpanel" aria-labelledby="v-pills-Home-tab">
+                            <form id="homeForm">
+                              <textarea name="homeText" id="summernoteHome" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitHome()">Envoyer</button>
+                            </form>
+                            <p id="home" style="text-align: center"></p>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-About" role="tabpanel" aria-labelledby="v-pills-About-tab">
-                          <p>Placeholder content for the tab panel. This one relates to the profile tab. Takes you miles high, so high, 'cause she’s got that one international smile. There's a stranger in my bed, there's a pounding in my head. Oh, no. In another life I would make you stay. ‘Cause I, I’m capable of anything. Suiting up for my crowning battle. Used to steal your parents' liquor and climb to the roof. Tone, tan fit and ready, turn it up cause its gettin' heavy. Her love is like a drug. I guess that I forgot I had a choice.</p>
+                        <div class="tab-pane fade" id="pills-About" role="tabpanel" aria-labelledby="pills-About-tab">
+                          <form id="aboutForm">
+                              <textarea name="aboutText" id="summernoteAbout" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitAbout()">Envoyer</button>
+                          </form>
+                          <p id="about" style="text-align: center"></p>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-Recommandation" role="tabpanel" aria-labelledby="v-pills-Recommandation-tab">
-                          <p>Placeholder content for the tab panel. This one relates to the messages tab. You got the finest architecture. Passport stamps, she's cosmopolitan. Fine, fresh, fierce, we got it on lock. Never planned that one day I'd be losing you. She eats your heart out. Your kiss is cosmic, every move is magic. I mean the ones, I mean like she's the one. Greetings loved ones let's take a journey. Just own the night like the 4th of July! But you'd rather get wasted.</p>
+                        <div class="tab-pane fade" id="pills-Recommandation" role="tabpanel" aria-labelledby="pills-Recommandation-tab">
+                          <form id="recommandationForm">
+                              <textarea name="recommandationText" id="summernoteRecommandation" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitRecommandation()">Envoyer</button>
+                          </form>
+                          <p id="recommandation" style="text-align: center"></p>
                         </div>
-                        <div class="tab-pane fade active show" id="v-pills-Contact" role="tabpanel" aria-labelledby="v-pills-Contact-tab">
-                          <p>Placeholder content for the tab panel. This one relates to the settings tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+                        <div class="tab-pane fade" id="pills-Archives" role="tabpanel" aria-labelledby="pills-Archives-tab">
+                          <form id="archivesForm">
+                              <textarea name="archivesText" id="summernoteArchives" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitArchives()" id="sendArchives">Envoyer</button>
+                          </form>
+                          <p id="archives" style="text-align: center"></p>
                         </div>
-
+                        <div class="tab-pane fade" id="pills-Contact" role="tabpanel" aria-labelledby="pills-Contact-tab">
+                          <form id="contactForm">
+                              <textarea name="contactText" id="summernoteContact" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitContact()" id="sendContact">Envoyer</button>
+                          </form>
+                          <p id="contact" style="text-align: center"></p>
+                        </div>
+                        <div class="tab-pane fade" id="pills-LastIssues" role="tabpanel" aria-labelledby="pills-LastIssues-tab">
+                          <form id="lastIssuesForm">
+                              <textarea name="lastIssuesText" id="summernoteLastIssues" cols="30" rows="10"></textarea>
+                              <button class="btn btn-success" type="button" onclick="submitLastIssues()" id="sendLastIssues">Envoyer</button>
+                          </form>
+                          <p id="contact" style="text-align: center"></p>
+                        </div>
+                        <div id="snackbar">Vos données ont été enregistrées avec succès</div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -403,8 +446,280 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
-    </script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+      function checkInputs() {
+        var isValid = true;
+        $('textarea').each(function() {
+          if ($(this).val() === '') {
+            // $('#confirm').prop('disabled', true)
+            isValid = false;
+            return false;
+          }
+        });
+        if(isValid) {
+          window.alert('success filled')
+          document.getElementById("confirm").style.display="block";
+          document.getElementById("cancel").style.display="block";
+        }
+        return isValid;
+      }
+      function submitHome() {
+        // checkInputs();
+        var contenu = document.getElementById("summernoteHome").value;
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          $.ajax({
+            type: "POST",
+            url: "/template/menuHome",
+            data: {
+              homeText:contenu,
+              _token: _token},  
+            success: function (data){
+              $(this).find(':button[type=submit]').prop('disabled', true);
+          document.getElementById("homeForm").style.display="none";
+          document.getElementById("home").innerHTML= "Form submitted";
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+        });
+      }
+      function store() {
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type: "POST",
+            url: "/template/menu",
+            data: {
+              _token: _token},  
+            success: function (data){
+              window.alert('success filled')
+              if (window.confirm('Do you want to continue?'))
+                {
+                  window.location.href = "/template/collapse"
+                }
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+          })
+        
+      }
+      function submitAbout() {
+        // checkInputs();
+        var contenu = document.getElementById("summernoteAbout").value;
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            type: "POST",
+            url: "/template/menuAbout",
+            data: {
+              aboutText:contenu,
+              _token: _token},  
+            success: function (data){
+              $(this).find(':button[type=submit]').prop('disabled', true);
+              document.getElementById("aboutForm").style.display="none";
+              document.getElementById("about").innerHTML= "Form submitted";
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+        });
+      }
+      function submitRecommandation() {
+        // checkInputs();
+        var contenu = document.getElementById("summernoteRecommandation").value;
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          $.ajax({
+            type: "POST",
+            url: "/template/menuRecommandation",
+            data: {
+              homeText:contenu,
+              _token: _token},  
+            success: function (data){
+              $(this).find(':button[type=submit]').prop('disabled', true);
+              document.getElementById("recommandationForm").style.display="none";
+              document.getElementById("recommandation").innerHTML= "Form submitted";
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+        });
+      }
+      function submitArchives() {
+        // checkInputs();
+        var contenu = document.getElementById("summernoteArchives").value;
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          $.ajax({
+            type: "POST",
+            url: "/template/menuArchives",
+            data: {
+              homeText:contenu,
+              _token: _token},  
+            success: function (data){
+              $(this).find(':button[type=submit]').prop('disabled', true);
+              document.getElementById("archivesForm").style.display="none";
+              document.getElementById("archives").innerHTML= "Form submitted";
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+        });
+      }
+      function submitContact() {
+        // checkInputs();
+        var contenu = document.getElementById("summernoteContact").value;
+          let _token   = $('meta[name="csrf-token"]').attr('content');
+          $.ajax({
+            type: "POST",
+            url: "/template/menuContact",
+            data: {
+              homeText:contenu,
+              _token: _token},  
+            success: function (data){
+              $(this).find(':button[type=submit]').prop('disabled', true);
+              document.getElementById("contactForm").style.display="none";
+              document.getElementById("contact").innerHTML= "Form submitted";
+              var x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+            },
+            error: function() {
+              window.alert('There was some error performing the AJAX call!');
+          }
+        });
+        
+      }
+      function submitLastIssues() {
+        
+      }
+      function setId(params) {
+        $('#summernoteHome').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteAbout').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteRecommandation').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteArchives').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteContact').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteRecommandations').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+        $('#summernoteLastIssues').summernote({
+          placeholder: 'Description ...',
+          tabsize: 2,
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen']]
+          ]
+        });
+      }
+     </script>
      <script type="text/javascript">
      let btn = document.getElementById("btnSubmit");
      btn.addEventListener('click', function(){
