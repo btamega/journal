@@ -364,32 +364,32 @@
                 <fieldset>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nom du journal</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName" required>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="journalName">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Nom du coordinateur principal</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur" required>
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur">
                   </div>
                   <fieldset class="form-group">
                     <legend class="mt-4">Organisation</legend>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" id="universityId" value="option1"  onclick="showOrganisation()">
+                      <input class="form-check-input" type="radio" name="organisation" id="universityId" value="option1"  onclick="showOrganisation()">
                       <label class="form-check-label" for="universityId">
                         Université
                       </label>
                     </div>
                     <div class="form-group">
-                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="universiy">
+                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="organisation">
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio"  id="associationId" value="option2" onclick="showOrganisation()">
+                      <input class="form-check-input" type="radio" name="organisation" id="associationId" value="option2" onclick="showOrganisation()">
                       <label class="form-check-label" for="associationId">
                         Association
                       </label>
                     </div>
                     
                     <div class="form-group">
-                      <input style="display:none" type="text" class="form-control" id="textAssociation" name="association">
+                      <input style="display:none" type="text" class="form-control" id="textAssociation" name="organisation">
                     </div>
                   </fieldset>
                   <div class="form-group">
@@ -499,6 +499,20 @@
     <script> 
     </script>
      <script type="text/javascript">
+      let btn = document.getElementById("btnSubmit");
+      let btn2 = document.getElementById("btnModify");
+      btn.addEventListener('click', function(){
+          btn.style.display = "none";
+          // inputt1.disabled= "true";
+          // inputt2.disabled= "true";
+          // inputt3.disabled= "true";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+      
      let btn = document.getElementById("btnSubmit");
      btn.addEventListener('click', function(){
       var x = document.getElementById("snackbar");

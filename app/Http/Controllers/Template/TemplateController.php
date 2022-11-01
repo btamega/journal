@@ -29,25 +29,20 @@ class TemplateController extends Controller
     }
     public function storeJournalInfos(Request $request)
     {
+        $navbarColor = $request->session()->get("colorNavbar");
         $data = $request->all();
-        // dd($data);
-        // $this->validate($request, [
-        //     'journalName' => 'required|max:255',
-        //     'coordinateur' => 'required|max:255',
-        //     'universiy' => 'nullable|max:255',
-        //     'association' => 'nullable|max:255',
-        //     'logo' => 'required|image',
-        //     'logo2' => 'nullable|image',
-        //     'other' => 'nullable|max:255',
-        // ]);
-        $request->session()->put('journalDatas', $data);
-        if ($request->dispositionMenu=="Horizontal") {
-            return redirect()->route('menuHorizontal');
-        } else {
-            return redirect()->route('menuVertical');
-        }
-        
-        
+        dd($navbarColor,$data);
+    }
+    public function postColor(Request $request)
+    {
+        $NavigColor = $request->input('inputOne');
+        $TextColor  = $request->input('inputTwo');
+        $BackgroundColor  = $request->input('inputThree');
+        $request->session()->put('colorNavbar',$NavigColor );
+        $request->session()->put('colorText',$TextColor );
+        $request->session()->put('colorBody',$BackgroundColor );
+
+        return redirect("template/name");
     }
 
     /**

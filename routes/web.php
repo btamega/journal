@@ -208,6 +208,8 @@ Route::get('template/tables', function () {
 Route::get('template/tooltips', function () {
     return view('/admin/template/base/tooltips');
 });
+
+Route::post('/postColor',[TemplateController::class, 'postColor']);
 Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos']);
 Route::get("/template/menu-horizontal", [TemplateController::class, 'getMenuHorizontal'])->name("menuHorizontal");
 Route::get("/template/menu-vertical", [TemplateController::class, 'getMenuVertical'])->name("menuVertical");
