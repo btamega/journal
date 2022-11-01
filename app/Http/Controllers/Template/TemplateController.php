@@ -31,9 +31,14 @@ class TemplateController extends Controller
     }
     public function storeJournalInfos(Request $request)
     {
-        $navbarColor = $request->session()->get("colorNavbar");
         $data = $request->all();
-        dd($navbarColor,$data);
+        $request->session()->put('journalDatas',$data);
+        if ($request->dispositionMenu=="Horizontal") {
+            return redirect()->route('menuHorizontal');
+        } else {
+            return redirect()->route('menuVertical');
+        }
+        
     }
     public function postColor(Request $request)
     {
