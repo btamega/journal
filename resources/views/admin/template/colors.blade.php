@@ -46,6 +46,47 @@
       // Bootstrap ID
       gtag('config', 'UA-118965717-5');
     </script>
+    <style>
+#btnModify{
+  display: none;
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color:#4169E1;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+</style>
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -76,23 +117,23 @@
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-puzzle")}}"></use>
             </svg> Menus</a>
-            <ul class="nav-group-items">
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/accordion")}}"><span class="nav-icon"></span> Accordion</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/breadcrumb")}}"><span class="nav-icon"></span> Breadcrumb</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/cards")}}"><span class="nav-icon"></span> Cards</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/carousel")}}"><span class="nav-icon"></span> Carousel</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/collapse")}}"><span class="nav-icon"></span> Collapse</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/list-group")}}"><span class="nav-icon"></span> List group</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/navs-tabs")}}"><span class="nav-icon"></span> Navs &amp; Tabs</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/pagination")}}"><span class="nav-icon"></span> Pagination</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/placeholders")}}"><span class="nav-icon"></span> Placeholders</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/popovers")}}"><span class="nav-icon"></span> Popovers</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/progress")}}"><span class="nav-icon"></span> Progress</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/scrollspy")}}"><span class="nav-icon"></span> Scrollspy</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/spinners")}}"><span class="nav-icon"></span> Spinners</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/tables")}}"><span class="nav-icon"></span> Tables</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{URL::to("template/tooltips")}}"><span class="nav-icon"></span> Tooltips</a></li>
-            </ul>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="base/accordion.html"><span class="nav-icon"></span> Accordion</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span> Breadcrumb</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/cards.html"><span class="nav-icon"></span> Cards</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/carousel.html"><span class="nav-icon"></span> Carousel</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/collapse.html"><span class="nav-icon"></span> Collapse</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/list-group.html"><span class="nav-icon"></span> List group</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/navs-tabs.html"><span class="nav-icon"></span> Navs &amp; Tabs</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/pagination.html"><span class="nav-icon"></span> Pagination</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/placeholders.html"><span class="nav-icon"></span> Placeholders</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/popovers.html"><span class="nav-icon"></span> Popovers</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/progress.html"><span class="nav-icon"></span> Progress</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/scrollspy.html"><span class="nav-icon"></span> Scrollspy</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/spinners.html"><span class="nav-icon"></span> Spinners</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/tables.html"><span class="nav-icon"></span> Tables</a></li>
+            <li class="nav-item"><a class="nav-link" href="base/tooltips.html"><span class="nav-icon"></span> Tooltips</a></li>
+          </ul>
         </li>
         <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
@@ -285,11 +326,7 @@
                       <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-739" role="tab">
                           <svg class="icon me-2">
                             <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-code")}}"></use>
-                          </svg>Preview</a></li>
-                      <li class="nav-item"><a class="nav-link" href="https://coreui.io/docs/forms/form-control/" target="_blank">
-                          <svg class="icon me-2">
-                            <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-media-play")}}"></use>
-                          </svg>Display</a></li>
+                          </svg>La panoplie des couleurs</a></li>
                     </ul>
                     <div class="tab-content rounded-bottom">
                       <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-739">
@@ -298,47 +335,47 @@
                         <form method="post" action="{{URL::to("postColor")}}">
                           @csrf
                           <div class="row">
-                            
-                              <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                                <input type="color" class="form-control form-control-color bg-primary theme-color w-75 rounded mb-2" id="exampleColorInput" value="#563d7c" title="Choose your color" style="padding-top:75%">
-                                {{-- <div class="bg-primary theme-color w-75 rounded mb-2" style="padding-top:75%"></div>--}}
-                                <h6>Brand Primary Color</h6> 
-                              </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <label for="exampleColorInput" class="form-label">Menu</label>
-                              <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                            <div ><strong>Choisissez le thème de votre barre de navigation</strong></div>
+                            <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
+                            <div class="d-flex justify-content-between ">
+                              <div>
+                              <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
+                               </div>
+                               <div>
+                                <!-- <p id="textOne" class="ml-auto p-2">Voici la visualisation</p> -->
+                               </div>
+                                </div>
+                              <input  name="inputOne" type="color" class="input1"  value="#563d7c" title="Choose your color">  
                             </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <label for="exampleColorInput" class="form-label">Arrière-plan</label>
-                              <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                            <div ><strong>Choisissez le thème de votre texte</strong></div>
+                            <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
+                            <div class="d-flex justify-content-between ">
+                              <div>
+                              <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
+                               </div>
+                               <div>
+                                <!-- <p id="textTwo" class="ml-auto p-2">Voici la visualisation</p> -->
+                               </div>
+                                </div>
+                              <input name="inputTwo" type="color" class="input2" id="exampleColorInput" value="#563d7c" title="Choose your color">
                             </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-success theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Success Color</h6>
-                            </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-danger theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Danger Color</h6>
-                            </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-warning theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Warning Color</h6>
-                            </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-info theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Info Color</h6>
-                            </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-light theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Light Color</h6>
-                            </div>
-                            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
-                              <div class="bg-dark theme-color w-75 rounded mb-2" style="padding-top:75%"></div>
-                              <h6>Brand Dark Color</h6>
+                            <div ><strong>Choisissez le thème de votre arrière plan</strong></div>
+                            <div class="col-xl-7 col-md-10 col-sm-4 col-20 mb-4">
+                            <div class="d-flex justify-content-between ">
+                              <div>
+                              <label for="exampleColorInput" class="form-label">sélectionner une couleur</label>
+                               </div>
+                               <div>
+                                <!-- <p id="textThree" class="ml-auto p-2">Voici la visualisation</p> -->
+                               </div>
+                                </div>
+                              <input name="inputThree" type="color" class="input3" id="exampleColorInput" value="#563d7c" title="Choose your color">  
                             </div>
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary" id="btnSubmit"  >Enregistrer</button>
+                          <button type="modify" class="btn btn-primary" id="btnModify" >Modifier</button>
                         </form>
+                        <div id="snackbar">L'étape du choix de couleur a été exécutée avec succès</div>
                       </div>
                       </div>
                     </div>
@@ -361,7 +398,46 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
+    <script type="text/javascript"> 
+    let inputt1 = document.getElementsByClassName("input1");
+    // var text1 = document.getElementById("textOne");
+    let inputt2 = document.getElementsByClassName("input2");
+    // var text2 = document.getElementById("textTwo");
+    let inputt3 = document.getElementsByClassName("input3");
+    // var text3 = document.getElementById("textThree");
+   let btn = document.getElementById("btnSubmit");
+   let btn2 = document.getElementById("btnModify");
+    //    input1.addEventListener('change', function () {
+    //   text1.style.color = this.value;
+    //   console.log(this.value);
+    //       });
+    //       input2.addEventListener('change', function () {
+    //   text2.style.color = this.value;
+      
+    //       });
+    //       input3.addEventListener('change', function () {
+    //   text3.style.color = this.value;
+      
+  //   //       });
+          btn.addEventListener('click', function(){
+          btn.style.display = "none";
+          inputt1.disabled= "true";
+          inputt2.disabled= "true";
+          inputt3.disabled= "true";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+  // const submit = () =>{
+  //   var x = document.getElementById("snackbar");
+  // x.className = "show";
+  // setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+  //         });
+  // }
+       
+          
     </script>
   </body>
 </html>

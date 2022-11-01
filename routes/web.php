@@ -207,4 +207,6 @@ Route::get('template/tables', function () {
 Route::get('template/tooltips', function () {
     return view('/admin/template/base/tooltips');
 });
+
+Route::post('/postColor',[TemplateController::class, 'postColor']);
 Route::post("/storeJournalData", [TemplateController::class, 'storeJournalInfos'])->name('template.journal');

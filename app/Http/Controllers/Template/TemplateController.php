@@ -18,8 +18,20 @@ class TemplateController extends Controller
     }
     public function storeJournalInfos(Request $request)
     {
+        $navbarColor = $request->session()->get("colorNavbar");
         $data = $request->all();
-        dd($data);
+        dd($navbarColor,$data);
+    }
+    public function postColor(Request $request)
+    {
+        $NavigColor = $request->input('inputOne');
+        $TextColor  = $request->input('inputTwo');
+        $BackgroundColor  = $request->input('inputThree');
+        $request->session()->put('colorNavbar',$NavigColor );
+        $request->session()->put('colorText',$TextColor );
+        $request->session()->put('colorBody',$BackgroundColor );
+
+        return redirect("template/name");
     }
 
     /**

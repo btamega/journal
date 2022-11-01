@@ -37,6 +37,47 @@
     <link href="{{asset("template/css/examples.css")}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <style>
+      #btnModify{
+        display: none;
+      }
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color:#4169E1;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+      </style>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -343,37 +384,37 @@
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="menu" checked="" >
+                      <input class="form-check-input" type="checkbox" value="Home" id="flexCheckDefault" name="menu[]" checked="" required>
                       <label class="form-check-label" for="flexCheckDefault">
                         Home
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="about" checked="" name="menu">
+                      <input class="form-check-input" type="checkbox" value="About" id="about" checked="" name="menu[]">
                       <label class="form-check-label" for="about">
                         About
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="recommandation" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Recommandation" id="recommandation" name="menu[]">
                       <label class="form-check-label" for="recommandation">
                         Recommandation
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="archives" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Archives" id="archives" name="menu[]">
                       <label class="form-check-label" for="archives">
                         Archives
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="lastIssues" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Last Issues" id="lastIssues" name="menu[]">
                       <label class="form-check-label" for="lastIssues">
                         Last Issues
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="contact" name="menu">
+                      <input class="form-check-input" type="checkbox" value="Contact" id="contact" name="menu[]">
                       <label class="form-check-label" for="contact">
                         Contact
                       </label>
@@ -394,9 +435,12 @@
                       </div>
                     </div>
                   </fieldset> <br>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" id="btnSubmit"  >Enregistrer</button>
+                  <button type="modify" class="btn btn-primary" id="btnModify" >Modifier</button>
+                 
                 </fieldset>
               </form>
+              <div id="snackbar">Vos données ont été enregistrées avec succès</div>
             </div>
           </div>
         </div>
@@ -416,6 +460,26 @@
     <script> 
     </script>
      <script type="text/javascript">
+      let btn = document.getElementById("btnSubmit");
+      let btn2 = document.getElementById("btnModify");
+      btn.addEventListener('click', function(){
+          btn.style.display = "none";
+          // inputt1.disabled= "true";
+          // inputt2.disabled= "true";
+          // inputt3.disabled= "true";
+          btn2.style.display = "block";
+          var x = document.getElementById("snackbar");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+          });
+
+      
+     function submit() {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+       
+     }
       function showfield(){
         var text = document.getElementById("text");
         var checkBox = document.getElementById("myCheck");
