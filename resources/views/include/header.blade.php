@@ -114,7 +114,7 @@
         @if(App::getLocale()=='en' ||App::getLocale()=='fr')
 		<div class="topnav" id="myTopnav" style="background-color:{{$backColor->value}}">
 			@foreach($menus as $key => $value)
-			 <a href="{{URL::to('/'.$value->key)}}" class="active">{{ strtoupper($value->key) }}</a>
+			 <a href="{{URL::to('/'.$value->key.'Page')}}" class="active">{{ strtoupper($value->key) }}</a>
 			@endforeach
 			{{-- <a href="{{URL::to('/')}}" class="active">{{__('messages.accueil')}}</a>
 			<a  href="{{URL::to('/about')}}" >{{__('messages.a_propos')}}</a>
