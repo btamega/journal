@@ -496,16 +496,30 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
+    <script>
+    function showOrganisation(){
+        var text = document.getElementById("textUniversite");
+        var checkBox = document.getElementById("universityId");
+        var textAssociation = document.getElementById("textAssociation");
+        var checkBoxAssociation = document.getElementById("associationId");
+        if (checkBox.checked == true){
+          checkBoxAssociation.checked=false;
+          text.style.display = "block";
+          textAssociation.value='';
+          textAssociation.style.display = "none";
+        } else {
+          checkBoxAssociation.checked=true;
+          text.value='';
+          text.style.display = "none";
+          textAssociation.style.display = "block";
+        }
+      } 
     </script>
      <script type="text/javascript">
       let btn = document.getElementById("btnSubmit");
       let btn2 = document.getElementById("btnModify");
       btn.addEventListener('click', function(){
           btn.style.display = "none";
-          // inputt1.disabled= "true";
-          // inputt2.disabled= "true";
-          // inputt3.disabled= "true";
           btn2.style.display = "block";
           var x = document.getElementById("snackbar");
   x.className = "show";
@@ -532,23 +546,7 @@
           text.style.display = "none";
         }
       }
-      function showOrganisation(){
-        var text = document.getElementById("textUniversite");
-        var checkBox = document.getElementById("universityId");
-        var textAssociation = document.getElementById("textAssociation");
-        var checkBoxAssociation = document.getElementById("associationId");
-        if (checkBox.checked == true){
-          checkBoxAssociation.checked=false;
-          text.style.display = "block";
-          textAssociation.value='';
-          textAssociation.style.display = "none";
-        } else {
-          checkBoxAssociation.checked=true;
-          text.value='';
-          text.style.display = "none";
-          textAssociation.style.display = "block";
-        }
-      }
+      
       function toggle(source) {
         checkboxes = document.getElementsByName('menu');
         var check = document.getElementById("all");

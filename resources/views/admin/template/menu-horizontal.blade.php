@@ -495,7 +495,7 @@
                 data: {
                   homeText:contenu,
                   _token: _token},  
-                success: function (data){
+                success: function (dataResult){	
                   $(this).find(':button[type=submit]').prop('disabled', true);
               document.getElementById("homeForm").style.display="none";
               document.getElementById("home").innerHTML= "Form submitted";
@@ -559,7 +559,7 @@
                 type: "POST",
                 url: "/template/menuRecommandation",
                 data: {
-                  homeText:contenu,
+                  recommandationText:contenu,
                   _token: _token},  
                 success: function (data){
                   $(this).find(':button[type=submit]').prop('disabled', true);
@@ -582,7 +582,7 @@
                 type: "POST",
                 url: "/template/menuArchives",
                 data: {
-                  homeText:contenu,
+                  archivesText:contenu,
                   _token: _token},  
                 success: function (data){
                   $(this).find(':button[type=submit]').prop('disabled', true);
@@ -605,7 +605,7 @@
                 type: "POST",
                 url: "/template/menuContact",
                 data: {
-                  homeText:contenu,
+                  contactText:contenu,
                   _token: _token},  
                 success: function (data){
                   $(this).find(':button[type=submit]').prop('disabled', true);

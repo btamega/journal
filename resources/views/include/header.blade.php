@@ -113,9 +113,12 @@
 	</header>
         @if(App::getLocale()=='en' ||App::getLocale()=='fr')
 		<div class="topnav" id="myTopnav">
-			<a href="{{URL::to('/')}}" class="active">{{__('messages.accueil')}}</a>
+			@foreach($menus as $key => $value)
+			 <a href="{{URL::to('/'.$value->key)}}" class="active">{{ strtoupper($value->key) }}</a>
+			@endforeach
+			{{-- <a href="{{URL::to('/')}}" class="active">{{__('messages.accueil')}}</a>
 			<a  href="{{URL::to('/about')}}" >{{__('messages.a_propos')}}</a>
-			<a href="{{URL::to('/comiteEditorial')}}" >{{__('messages.comiteEditorial')}}</a>
+			<a href="{{URL::to('/comiteEditorial')}}" >{{__('messages.comiteEditorial')}}</a> --}}
 			<div class="dropdown1">
 				<button class="dropbtn"  >{{__('messages.recommandation')}} 
 				<i class="fa fa-caret-down"></i>

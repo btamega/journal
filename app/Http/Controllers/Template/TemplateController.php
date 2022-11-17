@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Template;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 class TemplateController extends Controller
 {
     /**
@@ -13,6 +13,36 @@ class TemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getHome()
+    {
+        $homeText = DB::table('key_value')->where('key','home')->first();
+        return view('/home')->with('homeText',$homeText);
+    }
+    public function getAbout()
+    {
+        $aboutText = DB::table('key_value')->where('key','about')->first();
+        return view('/about')->with('aboutText',$aboutText);
+    }
+    public function getArchives()
+    {
+        $archivesText = DB::table('key_value')->where('key','archives')->first();
+        return view('/archives')->with('archivesText',$archivesText);
+    }
+    public function getRecommandation()
+    {
+        $recommandationText = DB::table('key_value')->where('key','recommandation')->first();
+        return view('/recommandation')->with('recommandationText',$recommandationText);
+    }
+    public function getContact()
+    {
+        $contactText = DB::table('key_value')->where('key','contact')->first();
+        return view('/contact')->with('contactText',$contactText);
+    }
+    public function getLastIssues()
+    {
+        $lastIssuesText = DB::table('key_value')->where('key','lastIssues')->first();
+        return view('/lastIssues')->with('lastIssuesText',$lastIssuesText);
+    }
     public function index()
     {
         return view("admin/template/index");
@@ -133,38 +163,56 @@ class TemplateController extends Controller
     }
     public function storeArchives(Request $request)
     {
-        $data = $request->all();
-        $request->session()->put('archives', $data);
+        $data = $request->archivesText;
+        DB::table('key_value')->insert([
+            'key' => 'Archives',
+            'value' => $data
+        ]);
 
     }
     public function storeRecommandation(Request $request)
     {
-        $data = $request->all();
-        $request->session()->put('recommandation', $data);
+        $data = $request->recommandationText;
+        DB::table('key_value')->insert([
+            'key' => 'Recommandation',
+            'value' => $data
+        ]);
 
     }
     public function storeAbout(Request $request)
     {
-        $data = $request->all();
-        $request->session()->put('about', $data);
+        $data = $request->aboutText;
+        DB::table('key_value')->insert([
+            'key' => 'About',
+            'value' => $data
+        ]);
 
     }
     public function storeHome(Request $request)
     {
-        $data = $request->all();
-        $request->session()->put('home', $data);
+        $data = $request->homeText;
+        DB::table('key_value')->insert([
+            'key' => 'Home',
+            'value' => $data
+        ]);
 
     }
     public function storeLastIssues(Request $request)
     {
         $data = $request->all();
-        $request->session()->put('lastIssues', $data);
+        DB::table('key_value')->insert([
+            'key' => 'Last Issues',
+            'value' => $data
+        ]);
 
     }
     public function storeContact(Request $request)
     {
-        $data = $request->all();
-        $request->session()->put('contact', $data);
+        $data = $request->contactText;
+        DB::table('key_value')->insert([
+            'key' => 'Contact',
+            'value' => $data
+        ]);
 
     }
 

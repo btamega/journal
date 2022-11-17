@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $fascicules = DB::table("fascicules")->get();
         $archives = DB::table("volumes")->get();
         $tab=array();
+        $menus = DB::table('key_value')->get();
         foreach($recentArchives as $item)
 		{
             array_push($tab,$item);
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('lastIssues',$lastIssues);
         View::share('fascicules',$fascicules);
         View::share('tab',$tab);
+        View::share('menus',$menus);
         View::share('recentArchives',$recentArchives);
         $messages = DB::table('commentaires')->orderByDesc('id')->get();
         $nombreMessage = $messages->count();
