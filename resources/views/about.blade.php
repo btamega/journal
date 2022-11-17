@@ -107,7 +107,8 @@ div.mod_search35 input[type="search"]{
             <div class="inner">
                 <div class="general_content">                                                                        
                     <div class="main_content" style="padding: 30px">
-                        <p style="box-sizing: inherit; margin: 1rem 0px; font-size: 12.8px; text-align: center;">
+                    <div>{!!$aboutText->value!!}</div>
+                        <!-- <p style="box-sizing: inherit; margin: 1rem 0px; font-size: 12.8px; text-align: center;">
                             <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;">
                                 <span style="color: #ff9900;">
                                     <strong style="box-sizing: inherit; color: #333333; font-family: 'times new roman'; font-size: 12.16px;">
@@ -220,7 +221,7 @@ div.mod_search35 input[type="search"]{
                                     {{__('messages.paragraphe_14_About')}}
                                 </span>
                             </span>
-                        </p>
+                        </p> -->
                         
 
                     </div>

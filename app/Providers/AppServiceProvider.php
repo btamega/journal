@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
         $archives = DB::table("volumes")->get();
         $tab=array();
         $menus = DB::table('key_value')->get();
+        $colorNav = DB::table('key_value')->select('value')->where('key','colorNavbar')->first();
+        $colorText = DB::table('key_value')->select('value')->where('key','colorText')->first();
+        $colorBackground = DB::table('key_value')->select('value')->where('key','colorBody')->first();
         foreach($recentArchives as $item)
 		{
             array_push($tab,$item);
@@ -41,6 +44,9 @@ class AppServiceProvider extends ServiceProvider
         View::share('fascicules',$fascicules);
         View::share('tab',$tab);
         View::share('menus',$menus);
+        View::share('navColor',$colorNav);
+        View::share('textNav',$colorText);
+        View::share('backColor',$colorBackground);
         View::share('recentArchives',$recentArchives);
         $messages = DB::table('commentaires')->orderByDesc('id')->get();
         $nombreMessage = $messages->count();

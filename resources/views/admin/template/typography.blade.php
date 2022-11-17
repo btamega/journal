@@ -359,7 +359,7 @@
             <div class="card-header">Informations de base</div>
             <div class="card-body">
               <p>Veuillez choisir le logo et le nom du journal</p>
-              <form method="POST" action="{{ URL::to('/storeJournalData') }}" id="myForm">
+              <form method="POST" action="{{ URL::to('/storeJournalData') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <fieldset>
                   <div class="form-group">
@@ -525,11 +525,6 @@
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
           });
-
-      
-     function submit() {
-      this.disabled=true;
-     }
      let btn = document.getElementById("btnSubmit");
      btn.addEventListener('click', function(){
       

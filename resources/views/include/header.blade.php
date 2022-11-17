@@ -112,7 +112,7 @@
 		</section>
 	</header>
         @if(App::getLocale()=='en' ||App::getLocale()=='fr')
-		<div class="topnav" id="myTopnav">
+		<div class="topnav" id="myTopnav" style="background-color:{{$backColor->value}}">
 			@foreach($menus as $key => $value)
 			 <a href="{{URL::to('/'.$value->key)}}" class="active">{{ strtoupper($value->key) }}</a>
 			@endforeach
