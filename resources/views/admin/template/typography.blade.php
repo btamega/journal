@@ -370,6 +370,10 @@
                     <label for="exampleInputPassword1">Nom du coordinateur principal</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" name="coordinateur">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Email du coordinateur principal</label>
+                    <input type="email" class="form-control" id="exampleInputPassword1" name="email">
+                  </div>
                   <fieldset class="form-group">
                     <legend class="mt-4">Organisation</legend>
                     <div class="form-check">

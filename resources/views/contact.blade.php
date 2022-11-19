@@ -50,7 +50,7 @@ div.mod_search35 input[type="search"]{
 						<div class="contact" itemscope itemtype="https://schema.org/Person">						
 							<div class="page-header">
 								<h2>
-									<span class="contact-name" itemprop="name">Khalid Ben Srhir Coordinateur Scientifique </span>
+									<span class="contact-name" itemprop="name">{{ $coordinateur->value }}</span>
 								</h2>
 							</div>
 							<h3>

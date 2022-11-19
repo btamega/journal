@@ -13,50 +13,7 @@ class TemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function uploadFiles($inputName)
-    {
-        $target_dir = "../public/images/";
-        $target_file = $target_dir . basename($_FILES[$inputName]["name"]);
-        $path="images/".basename($_FILES[$inputName]["name"]);
-        $uploadOk = 1;
-        $getfilename =  str_replace(' ', '_', $path);
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        $type='Image';
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES[$inputName]["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-        }
-        if (file_exists($target_file)) {
-            echo 'Ce fichier existe déjà dans la base de données !';
-        $uploadOk = 0;
-        }
-        if ($_FILES[$inputName]["size"] > 50000*1024) {
-            echo 'La taille de votre image est trop volumineuse !';
-        $uploadOk = 0;
-        }
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" && $imageFileType == "mp4") {
-            $type='Video';
-            echo 'Désolé, les types de fichiers supportés sont JPG, JPEG, PNG & GIF !';
-        $uploadOk = 1;
-        }
-        if ($uploadOk == 0) {
-            echo 'Votre image n\'a pas été chargée  !';
-        } else {
-        if (move_uploaded_file($_FILES[$inputName]["tmp_name"], $getfilename)) {
-            return $getfilename;
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-        }
-    }
+    
     public function uploadMultipeFiles($inputName)
     {
         $justificatif=array();
@@ -102,7 +59,7 @@ class TemplateController extends Controller
     public function getArchives()
     {
         $archivesText = DB::table('key_value')->where('key','archives')->first();
-        return view('/archives')->with('archivesText',$archivesText);
+        return view('/archive')->with('archivesText',$archivesText);
     }
     public function getRecommandation()
     {
@@ -112,7 +69,8 @@ class TemplateController extends Controller
     public function getContact()
     {
         $contactText = DB::table('key_value')->where('key','contact')->first();
-        return view('/contact')->with('contactText',$contactText);
+        $coordinateur = DB::table('key_value')->where('key','coordinateur')->first();
+        return view('/contact')->with('contactText',$contactText)->with('coordinateur',$coordinateur);
     }
     public function getLastIssues()
     {
@@ -204,7 +162,16 @@ class TemplateController extends Controller
             'key' => 'menu',
             'value' => $request->dispositionMenu
         ]);
-        
+        DB::table('key_value')->insert([
+            'key' => 'coordinateur',
+            'value' => $request->coordinateur,
+            ['key' => 'picard@example.com', 'votes' => 0],
+            ['email' => 'janeway@example.com', 'votes' => 0],
+        ]);
+        DB::table('key_value')->insert([
+            'key' => 'coordinateur',
+            'value' => $request->coordinateur
+        ]);
         if ($request->dispositionMenu=="Horizontal") {
             return redirect()->route('menuHorizontal');
         } else {

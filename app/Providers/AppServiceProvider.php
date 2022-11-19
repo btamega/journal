@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $archives = DB::table("volumes")->get();
         $tab=array();
         $menus = DB::table('key_value')->where("status","1")->get();
+        $logo = DB::table('key_value')->where("key","logo")->first();
         $colorNav = DB::table('key_value')->select('value')->where('key','colorNavbar')->first();
         $dispositionMenu = DB::table('key_value')->select('value')->where('key','menu')->first();
         $colorText = DB::table('key_value')->select('value')->where('key','colorText')->first();
@@ -45,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('lastIssues',$lastIssues);
         View::share('fascicules',$fascicules);
         View::share('tab',$tab);
+        View::share('logo',$logo);
         View::share('menus',$menus);
         View::share('navColor',$colorNav);
         View::share('menu',$dispositionMenu);

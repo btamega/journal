@@ -86,7 +86,7 @@
 					<div class="sp-column ">
 						<h1 class="logo">
 							<a href="#">
-								<img class="sp-default-logo" src="{{asset("images/logo-hespéris.png")}}" alt="Hésperis Tamuda">
+								<img class="sp-default-logo" src="{{$logo->value}}" alt="Hésperis Tamuda">
 							</a>
 						</h1>
 					</div>
