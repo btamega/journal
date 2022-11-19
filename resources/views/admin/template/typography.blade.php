@@ -394,7 +394,7 @@
                   </fieldset>
                   <div class="form-group">
                     <label for="formFile" class="form-label">Logo du journal</label>
-                    <input class="form-control" type="file" id="formFile" name="logo" required>
+                    <input class="form-control" type="file" id="formFile" name="logo[]" required>
                   </div>
                   <div class="form-group">
                     <label for="formFile" class="form-label">Deuxième logo du journal</label>

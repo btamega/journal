@@ -13,18 +13,18 @@ class TemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function uploadFiles()
+    public function uploadFiles($inputName)
     {
         $target_dir = "../public/images/";
-        $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-        $path="images/".basename($_FILES["logo"]["name"]);
+        $target_file = $target_dir . basename($_FILES[$inputName]["name"]);
+        $path="images/".basename($_FILES[$inputName]["name"]);
         $uploadOk = 1;
         $getfilename =  str_replace(' ', '_', $path);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $type='Image';
         // Check if image file is a actual image or fake image
         if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["logo"]["tmp_name"]);
+        $check = getimagesize($_FILES[$inputName]["tmp_name"]);
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
@@ -33,39 +33,61 @@ class TemplateController extends Controller
             $uploadOk = 0;
         }
         }
-
-        // Check if file already exists
         if (file_exists($target_file)) {
             echo 'Ce fichier existe déjà dans la base de données !';
         $uploadOk = 0;
         }
-
-        //Check file size
-        if ($_FILES["logo"]["size"] > 50000*1024) {
+        if ($_FILES[$inputName]["size"] > 50000*1024) {
             echo 'La taille de votre image est trop volumineuse !';
         $uploadOk = 0;
         }
-
-        // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" && $imageFileType == "mp4") {
             $type='Video';
             echo 'Désolé, les types de fichiers supportés sont JPG, JPEG, PNG & GIF !';
         $uploadOk = 1;
         }
-
-        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             echo 'Votre image n\'a pas été chargée  !';
-        // if everything is ok, try to upload file
         } else {
-        if (move_uploaded_file($_FILES["logo"]["tmp_name"], $getfilename)) {
-            
+        if (move_uploaded_file($_FILES[$inputName]["tmp_name"], $getfilename)) {
             return $getfilename;
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
         }
+    }
+    public function uploadMultipeFiles($inputName)
+    {
+        $justificatif=array();
+        $files = array_filter($_FILES[$inputName]["name"]);
+            $total_count = count($_FILES[$inputName]["name"]);
+            for( $i=0 ; $i < $total_count ; $i++ ) {
+                $tmpFilePath = $_FILES[$inputName]["tmp_name"][$i];
+                if ($tmpFilePath != ""){
+                    $newFilePath = "images/" . basename($_FILES[$inputName]["name"][$i]);
+                    $imageFileType = strtolower(pathinfo($newFilePath,PATHINFO_EXTENSION));
+                    $getfilename =  str_replace(' ', '_', $newFilePath);
+                    $path= "images/".str_replace(' ', '_', $_FILES[$inputName]["name"][$i]);
+                    //File is uploaded to temp dir
+                    if (file_exists($newFilePath)) {
+                        return redirect()->back()->with('fileExist', 'Ce fichier existe déjà dans la base de données !');
+                    }
+                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif") {
+                    return redirect()->back()->with('fileType', 'Erreur, Veuillez charger une image !');
+                    }
+                    if ($_FILES[$inputName]["size"][$i] > 5000*1024) {
+                        return redirect()->back()->with('fileSizeToLong', 'La taille de votre fichier ne doit pas dépasser 5Mo !');
+                    }
+                    if(move_uploaded_file($_FILES[$inputName]["tmp_name"][$i], $getfilename)) {
+                        array_push($justificatif,$path);
+                    }else{
+                        return redirect()->back()->with('fileNotUploaded', 'Désolé, le fichier n\'a pas été chargé !');
+                    }
+                }
+            }
+            return $justificatif;
     }
     public function getHome()
     {
@@ -172,12 +194,11 @@ class TemplateController extends Controller
     {
         $data = $request->all();
         $image= new TemplateController();
-        $path=$image->uploadFiles();
+        $file=$image->uploadMultipeFiles("logo");
         DB::table('key_value')->insert([
             'key' => 'logo',
-            'value' => $path
+            'value' => $file[0]
         ]);
-        $request->session()->put('journalDatas',$data);
         if ($request->dispositionMenu=="Horizontal") {
             return redirect()->route('menuHorizontal');
         } else {
