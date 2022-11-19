@@ -31,10 +31,12 @@ class AppServiceProvider extends ServiceProvider
         $fascicules = DB::table("fascicules")->get();
         $archives = DB::table("volumes")->get();
         $tab=array();
-        $menus = DB::table('key_value')->get();
+        $menus = DB::table('key_value')->where("status","1")->get();
         $colorNav = DB::table('key_value')->select('value')->where('key','colorNavbar')->first();
+        $dispositionMenu = DB::table('key_value')->select('value')->where('key','menu')->first();
         $colorText = DB::table('key_value')->select('value')->where('key','colorText')->first();
         $colorBackground = DB::table('key_value')->select('value')->where('key','colorBody')->first();
+       
         foreach($recentArchives as $item)
 		{
             array_push($tab,$item);
@@ -45,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('tab',$tab);
         View::share('menus',$menus);
         View::share('navColor',$colorNav);
+        View::share('menu',$dispositionMenu);
         View::share('textNav',$colorText);
         View::share('backColor',$colorBackground);
         View::share('recentArchives',$recentArchives);

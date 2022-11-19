@@ -192,13 +192,19 @@ class TemplateController extends Controller
     }
     public function storeJournalInfos(Request $request)
     {
-        $data = $request->all();
+        $data = $request->except('logo');
+        $request->session()->put('journalDatas',$data);
         $image= new TemplateController();
         $file=$image->uploadMultipeFiles("logo");
         DB::table('key_value')->insert([
             'key' => 'logo',
             'value' => $file[0]
         ]);
+        DB::table('key_value')->insert([
+            'key' => 'menu',
+            'value' => $request->dispositionMenu
+        ]);
+        
         if ($request->dispositionMenu=="Horizontal") {
             return redirect()->route('menuHorizontal');
         } else {
@@ -259,6 +265,7 @@ class TemplateController extends Controller
         $data = $request->archivesText;
         DB::table('key_value')->insert([
             'key' => 'Archives',
+            'status' => '1',
             'value' => $data
         ]);
 
@@ -268,6 +275,7 @@ class TemplateController extends Controller
         $data = $request->recommandationText;
         DB::table('key_value')->insert([
             'key' => 'Recommandation',
+            'status' => '1',
             'value' => $data
         ]);
 
@@ -277,6 +285,7 @@ class TemplateController extends Controller
         $data = $request->aboutText;
         DB::table('key_value')->insert([
             'key' => 'About',
+            'status' => '1',
             'value' => $data
         ]);
 
@@ -286,6 +295,7 @@ class TemplateController extends Controller
         $data = $request->homeText;
         DB::table('key_value')->insert([
             'key' => 'Home',
+            'status' => '1',
             'value' => $data
         ]);
 
@@ -295,6 +305,7 @@ class TemplateController extends Controller
         $data = $request->all();
         DB::table('key_value')->insert([
             'key' => 'Last Issues',
+            'status' => '1',
             'value' => $data
         ]);
 
@@ -304,6 +315,7 @@ class TemplateController extends Controller
         $data = $request->contactText;
         DB::table('key_value')->insert([
             'key' => 'Contact',
+            'status' => '1',
             'value' => $data
         ]);
 

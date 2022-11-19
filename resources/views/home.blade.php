@@ -100,63 +100,63 @@ div.mod_search35 input[type="search"]{
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
     <div class="container">
     @if(App::getLocale()=='en' ||App::getLocale()=='fr')
-    <div id="sp-page-builder" class="sp-page-builder home-page page-8">
-        <div class="page-content">
-            <div id="content" class="right_sidebar">
-            <div class="inner">
-                <div class="general_content">                                                                        
-                    <div class="main_content" style="padding: 30px">
-                            <div>{!!$homeText->value!!}</div>
-                        {{-- <p style="box-sizing: inherit; margin: 1rem 0px; font-size: 12.8px; text-align: center;">
-                            <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;">
-                                <span style="color: #ff9900;">
-                                    <strong style="box-sizing: inherit; color: #333333; font-family: 'times new roman'; font-size: 12.16px;">
-                                        <span style="box-sizing: inherit; font-size: 14pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">
-                                            <span style="color: #3b5998; font-size: 28pt;">{{__('messages.titreHome1')}} &nbsp; </span>
-                                        </span>
-                                    </strong>
+        <div id="sp-page-builder" class="sp-page-builder home-page page-8">
+            <div class="page-content">
+                <div id="content" class="right_sidebar">
+                <div class="inner">
+                    <div class="general_content">                                                                        
+                        <div class="main_content" style="padding: 30px">
+                                <div>{!!$homeText->value!!}</div>
+                            {{-- <p style="box-sizing: inherit; margin: 1rem 0px; font-size: 12.8px; text-align: center;">
+                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;">
+                                    <span style="color: #ff9900;">
+                                        <strong style="box-sizing: inherit; color: #333333; font-family: 'times new roman'; font-size: 12.16px;">
+                                            <span style="box-sizing: inherit; font-size: 14pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">
+                                                <span style="color: #3b5998; font-size: 28pt;">{{__('messages.titreHome1')}} &nbsp; </span>
+                                            </span>
+                                        </strong>
+                                    </span>
                                 </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; text-align: justify;" align="center">
-                            <img class="img" src="{{asset("images\WhatsApp Image 2021-10-03 at 13.08.38.jpeg")}}">
-                            <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;"> 
+                            </p>
+                            <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; text-align: justify;" align="center">
+                                <img class="img" src="{{asset("images\WhatsApp Image 2021-10-03 at 13.08.38.jpeg")}}">
+                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;"> 
+                                    <span style="font-size: 14pt;">
+                                        {{__('messages.paragraphe1')}}
+                                    </span>
+                                </span>
                                 <span style="font-size: 14pt;">
-                                    {{__('messages.paragraphe1')}}
+                                    <span style="box-sizing: inherit;"></span>
+                                    <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;"></span>
                                 </span>
-                            </span>
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit;"></span>
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;"></span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', serif; letter-spacing: -0.2pt;">
-                                    {{__('messages.paragraphe2')}}
+                            </p>
+                            <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
+                                <span style="font-size: 14pt;">
+                                    <span style="box-sizing: inherit; font-family: 'Times New Roman', serif; letter-spacing: -0.2pt;">
+                                        {{__('messages.paragraphe2')}}
+                                    </span>
                                 </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;">   
-                                    {{__('messages.paragraphe3')}}
+                            </p>
+                            <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
+                                <span style="font-size: 14pt;">
+                                    <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;">   
+                                        {{__('messages.paragraphe3')}}
+                                    </span>
                                 </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe4')}}
+                            </p>
+                            <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
+                                <span style="box-sizing: inherit; font-size: 14pt;">
+                                    <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
+                                        {{__('messages.paragraphe4')}}
+                                    </span>
                                 </span>
-                            </span>
-                        </p> --}}
-                        
+                            </p> --}}
+                            
 
+                        </div>
                     </div>
                 </div>
-            </div>
-    </div>
+        </div>
     @else
     <div dir="rtl">
         <div id="sp-page-builder" class="sp-page-builder home-page page-8">
