@@ -144,6 +144,7 @@ div.desc {
 
 @endsection
 @section('body')
+@if ($menu->value=="Horizontal")
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
    <div class="container">
         <div id="sp-page-builder" class="sp-page-builder home-page page-8">
@@ -272,6 +273,11 @@ div.desc {
         </div>
     </div>
 </body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+    <div>{!!$archivesText->value!!}</div>
+</div>
+@endif
 @endsection
 
 

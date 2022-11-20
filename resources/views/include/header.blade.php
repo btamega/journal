@@ -113,7 +113,6 @@
 	</section>
 </header>
 	@if(App::getLocale()=='en' ||App::getLocale()=='fr')
-		@if($menu->value == "Horizontal")
 			<div class="topnav" id="myTopnav" style="background-color:{{$backColor->value}}">
 			    <div style="float: left;">
 				@foreach($menus as $key => $value)
@@ -136,9 +135,6 @@
 				</div>
 				<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 			</div>
-		@else
-			
-		@endif
 	@else
 	<div dir="rtl">
 		<div class="topnav" id="myTopnav">
@@ -259,7 +255,7 @@
 				</form>
 			</div>
 		</div>
-	  </div>
+	</div>
 	  <div class="modal" tabindex="-1" role="dialog" id="register">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

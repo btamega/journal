@@ -138,9 +138,8 @@ p{
 </style>
 @endsection
 @section('body')
+@if ($menu->value=="Horizontal")
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
-    
-
     <br><br>
     <div class="container">
        <div class="col-md-10">
@@ -197,4 +196,64 @@ p{
     </div>
     <a href="javascript:void(0)" class="scrollup">&nbsp;</a>
 </body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+    <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
+        <br><br>
+        <div class="container">
+           <div class="col-md-10">
+                <div class="block_blog_1">
+                    <span style="color: black; padding-top: 70px; padding-left: 0; font-size: 20px;">Resultats de recherche&nbsp; </span><br><br>
+                     @foreach($articles as $d)
+                       <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a target="_blank" id="article" href="../../../Downloads/{{$d->Lien_Telechargement}}"> {{$d->Titre}} <span style="color: black; float:right"><h5>{{$d->Nbre_Page}}</h5></span> </a> 
+                                    
+                                    <div class="meta">
+                                        @foreach($auteurs as $a)
+                                        @if ($a->id_articles==$d->id_articles)
+                                        <div class="post-author inline author">{{$a->Prenom}} {{$a->Nom}} {{$a->stat}}</div>
+                                        @endif
+                                        @endforeach
+                                        <br>
+                                        
+                                        <div class="post-author inline author">Date de publication: {{$d->Date_Publication}}</div>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                       @endforeach
+                    @foreach($SearchAuteurs as $d)
+                    @foreach($Searcharticles as $item)
+                       @if(($d->id_articles)==$item->id_articles)
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <a target="_blank" id="article" href="../../../Downloads/{{$item->Lien_Telechargement}}"> {{$item->Titre}} <span style="color: black; float:right"><h5>{{$item->Nbre_Page}}</h5></span> </a> 
+                                    
+                                    <div class="meta">
+                                        <div class="post-author inline author">{{$d->Prenom}} {{$d->Nom}} {{$d->stat}}</div>
+                                       <br>
+                                        
+                                        <div class="post-author inline author">Date de publication: {{$item->Date_Publication}}</div>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        @endif
+                        @endforeach
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </body>
+</div>
+@endif
 @endsection

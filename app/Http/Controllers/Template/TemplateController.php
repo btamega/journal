@@ -70,7 +70,10 @@ class TemplateController extends Controller
     {
         $contactText = DB::table('key_value')->where('key','contact')->first();
         $coordinateur = DB::table('key_value')->where('key','coordinateur')->first();
-        return view('/contact')->with('contactText',$contactText)->with('coordinateur',$coordinateur);
+        $email = DB::table('key_value')->where('key','email')->first();
+        $universite = DB::table('key_value')->where('key','organisation')->first();
+        return view('/contact')->with('contactText',$contactText)->with('coordinateur',$coordinateur)
+        ->with('email',$email)->with('universite',$universite);
     }
     public function getLastIssues()
     {
@@ -150,7 +153,9 @@ class TemplateController extends Controller
     }
     public function storeJournalInfos(Request $request)
     {
+        
         $data = $request->except('logo');
+        $organisation = !empty($request->organisation) ? $request->organisation : $request->organisation1;
         $request->session()->put('journalDatas',$data);
         $image= new TemplateController();
         $file=$image->uploadMultipeFiles("logo");
@@ -163,14 +168,10 @@ class TemplateController extends Controller
             'value' => $request->dispositionMenu
         ]);
         DB::table('key_value')->insert([
-            'key' => 'coordinateur',
-            'value' => $request->coordinateur,
-            ['key' => 'picard@example.com', 'votes' => 0],
-            ['email' => 'janeway@example.com', 'votes' => 0],
-        ]);
-        DB::table('key_value')->insert([
-            'key' => 'coordinateur',
-            'value' => $request->coordinateur
+            ['key' => 'coordinateur', 'value' => $request->coordinateur],
+            ['key' => 'email', 'value' => $request->email],
+            ['key' => 'organisation', 'value' => $organisation],
+            ['key' => 'journalName', 'value' => $request->journalName],
         ]);
         if ($request->dispositionMenu=="Horizontal") {
             return redirect()->route('menuHorizontal');

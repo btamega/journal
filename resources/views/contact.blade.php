@@ -39,6 +39,7 @@ div.mod_search35 input[type="search"]{
 	</style>
 @endsection
 @section('body')
+@if ($menu->value=="Horizontal")
 <body  class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
 <section id="sp-main-body">
 	@if(App::getLocale()=='en' ||App::getLocale()=='fr')
@@ -73,7 +74,7 @@ div.mod_search35 input[type="search"]{
 											</dt>
 											<dd>
 												<span class="contact-street" itemprop="streetAddress">
-													Faculté de Lettre et des Sciences Humaines  BP 1040 Rabat Maroc					<br />
+													{{$universite->value}}					<br />
 												</span>
 											</dd>
 											<dt>
@@ -81,17 +82,8 @@ div.mod_search35 input[type="search"]{
 													<img src="images/emailButton.png" alt="E-mail: " />		
 												</span>
 											</dt>
-											<dd>
-												<span class="contact-emailto">
-													<span id="cloak1eed0deaee23168f7e0c79d5de2cfdf4">Cette adresse e-mail est protégée contre les robots spammeurs. Vous devez activer le JavaScript pour la visualiser.</span><script type='text/javascript'>
-													document.getElementById('cloak1eed0deaee23168f7e0c79d5de2cfdf4').innerHTML = '';
-													var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
-													var path = 'hr' + 'ef' + '=';
-													var addy1eed0deaee23168f7e0c79d5de2cfdf4 = 'kh&#97;l&#105;db&#101;nsrh&#105;r' + '&#64;';
-													addy1eed0deaee23168f7e0c79d5de2cfdf4 = addy1eed0deaee23168f7e0c79d5de2cfdf4 + 'gm&#97;&#105;l' + '&#46;' + 'c&#111;m';
-													var addy_text1eed0deaee23168f7e0c79d5de2cfdf4 = 'kh&#97;l&#105;db&#101;nsrh&#105;r' + '&#64;' + 'gm&#97;&#105;l' + '&#46;' + 'c&#111;m';document.getElementById('cloak1eed0deaee23168f7e0c79d5de2cfdf4').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy1eed0deaee23168f7e0c79d5de2cfdf4 + '\'>'+addy_text1eed0deaee23168f7e0c79d5de2cfdf4+'<\/a>';
-													</script>		
-												</span>
+											<dd> 
+												<a href="mailto:{{$email->value}}" style="text-decoration: none">{{$email->value}}</a>
 											</dd>
 										</dl>
 									</div>
@@ -330,4 +322,227 @@ div.mod_search35 input[type="search"]{
 <a href="javascript:void(0)" class="scrollup">&nbsp;</a>
 
 </body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+    <body  class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
+		<section id="sp-main-body">
+			@if(App::getLocale()=='en' ||App::getLocale()=='fr')
+				<div class="container">
+					<div class="row">
+						<div id="sp-component" class="col-sm-12 col-md-12">
+							<div class="sp-column ">
+								<div id="system-message-container"></div>
+								<div class="contact" itemscope itemtype="https://schema.org/Person">						
+									<div class="page-header">
+										<h2>
+											<span class="contact-name" itemprop="name">{{ $coordinateur->value }}</span>
+										</h2>
+									</div>
+									<h3>
+										<span class="contact-category">Sample Data-Contact
+										
+										</span>
+									</h3>
+									<div id="slide-contact" class="accordion">		
+										<div class="accordion-group">
+											<div class="accordion-heading">
+												<strong><a href="#basic-details" data-toggle="collapse" class="accordion-toggle">Contact</a></strong>
+											</div>
+											<div class="accordion-body collapse in" id="basic-details">
+												<div class="accordion-inner">	
+												<dl class="contact-address dl-horizontal" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+													<dt>
+														<span class="jicons-icons">
+															<img src="images/con_address.png" alt="Adresse: " />			
+														</span>
+													</dt>
+													<dd>
+														<span class="contact-street" itemprop="streetAddress">
+															{{$universite->value}}					<br />
+														</span>
+													</dd>
+													<dt>
+														<span class="jicons-icons" itemprop="email">
+															<img src="images/emailButton.png" alt="E-mail: " />		
+														</span>
+													</dt>
+													<dd> 
+														<a href="mailto:{{$email->value}}" style="text-decoration: none">{{$email->value}}</a>
+													</dd>
+												</dl>
+											</div>
+										</div>
+									</div>	
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<strong><a href="#display-form" data-toggle="collapse" class="accordion-toggle collapsed">Formulaire de Contact</a></strong>
+										</div>
+										<div class="accordion-body collapse" id="display-form">
+											<div class="accordion-inner">		
+											
+												<section id="contact">
+													<div class="container">
+													<div class="box last">
+														<div class="row">
+														<div class="col-sm-12">
+															<h1>Contactez-nous</h1>
+												
+															<div class="status alert alert-success" style="display:none"></div>
+															<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="/articles_list" role="form">
+																@csrf
+															<div class="row">
+																<div class="col-sm-5">
+																	<div class="form-group">
+																		<input type="text" name="userName" class="form-control" required="required" placeholder="Nom">
+																	</div>
+																</div>
+																<div class="col-sm-5">
+																	<div class="form-group">
+																		<input type="text" name="commentEmail" class="form-control" required="required" placeholder="Adresse émail">
+																	</div>
+																</div>
+															</div>
+																<div class="row">
+																	<div class="col-sm-10">
+																	<div class="form-group">
+																		<textarea name="commentText" id="message" required="required" class="form-control" rows="8" placeholder="Message"></textarea>
+																	</div>
+																	<div class="form-group">
+																		<input type="submit" class="btn btn-danger btn-lg" value=" Envoyer ">
+																	</div>
+																	</div>
+																</div>
+															</form>
+														</div>
+															
+													</div>
+													</div>
+												</div>
+											</section>
+										</div>
+									</div>
+								</div>			
+								</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			@else
+				<div id="bodyArabe" dir="rtl">
+					<div class="container">
+						<div class="row">
+							<div id="sp-component" class="col-sm-12 col-md-12">
+								<div class="sp-column ">
+									<div id="system-message-container"></div>
+									<div class="contact" itemscope itemtype="https://schema.org/Person">						
+										<div class="page-header">
+											<h2>
+												<span style="font-size: 20pt; font-family: Georgia, 'Times New Roman', Times, serif" class="contact-name" itemprop="name">خالد بن الصغير المنسق العلمي</span>
+											</h2>
+										</div>
+										<h3>
+											<span style="font-family: Georgia, 'Times New Roman', Times, serif" class="contact-category">اتصل بنا
+											</span>
+										</h3>
+										<div id="slide-contact" class="accordion">		
+											<div class="accordion-group">
+												<div class="accordion-heading">
+													<strong><a href="#basic-details" data-toggle="collapse" class="accordion-toggle">جهة الاتصال</a></strong>
+												</div>
+												<div class="accordion-body collapse in" id="basic-details">
+													<div class="accordion-inner">	
+													<dl class="contact-address dl-horizontal" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+														<dt>
+															<span class="jicons-icons">
+																<img src="images/con_address.png" alt="Adresse: " />			
+															</span>
+														</dt>
+														<dd style="font-size:14pt">
+															<span class="contact-street" itemprop="streetAddress">
+																Faculté de Lettre et des Sciences Humaines  BP 1040 Rabat Maroc					<br />
+															</span>
+														</dd>
+														<dt>
+															<span class="jicons-icons" itemprop="email">
+																<img src="images/emailButton.png" alt="E-mail: " />		
+															</span>
+														</dt>
+														<dd>
+															<span class="contact-emailto">
+																<span style="font-size:14pt" id="cloak1eed0deaee23168f7e0c79d5de2cfdf4">Cette adresse e-mail est protégée contre les robots spammeurs. Vous devez activer le JavaScript pour la visualiser.</span><script type='text/javascript'>
+																document.getElementById('cloak1eed0deaee23168f7e0c79d5de2cfdf4').innerHTML = '';
+																var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+																var path = 'hr' + 'ef' + '=';
+																var addy1eed0deaee23168f7e0c79d5de2cfdf4 = 'kh&#97;l&#105;db&#101;nsrh&#105;r' + '&#64;';
+																addy1eed0deaee23168f7e0c79d5de2cfdf4 = addy1eed0deaee23168f7e0c79d5de2cfdf4 + 'gm&#97;&#105;l' + '&#46;' + 'c&#111;m';
+																var addy_text1eed0deaee23168f7e0c79d5de2cfdf4 = 'kh&#97;l&#105;db&#101;nsrh&#105;r' + '&#64;' + 'gm&#97;&#105;l' + '&#46;' + 'c&#111;m';document.getElementById('cloak1eed0deaee23168f7e0c79d5de2cfdf4').innerHTML += '<a ' + path + '\'' + prefix + ':' + addy1eed0deaee23168f7e0c79d5de2cfdf4 + '\'>'+addy_text1eed0deaee23168f7e0c79d5de2cfdf4+'<\/a>';
+																</script>		
+															</span>
+														</dd>
+													</dl>
+												</div>
+											</div>
+										</div>	
+										<div class="accordion-group">
+											<div class="accordion-heading">
+												<strong><a href="#display-form" data-toggle="collapse" class="accordion-toggle collapsed">نموذج الاتصال</a></strong>
+											</div>
+											<div class="accordion-body collapse" id="display-form">
+												<div class="accordion-inner">		
+													<section id="contact">
+														<div class="container">
+														<div class="box last">
+															<div class="row">
+															<div class="col-sm-12">
+																<h1>هيسبريس-تمودا</h1>
+																<div class="status alert alert-success" style="display:none"></div>
+																<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="/sendemail.php" role="form">
+																<div class="row">
+																	<div class="col-sm-6">
+																		
+																		<div class="form-group">
+																			<input type="text" class="form-control" required="required" placeholder="الاسم ">
+																		</div>
+																		</div>
+																		<div class="col-sm-6">
+																		<div class="form-group">
+																			<input type="text" class="form-control" required="required" placeholder="البريد الالكتروني">
+																		</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-12">
+																		<div class="form-group">
+																			<textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="الرسالة"></textarea>
+																		</div>
+																		<div class="form-group">
+																			<input type="submit" class="btn btn-danger btn-lg" value=" إرسال البريد الإلكتروني ">
+																		</div>
+																		</div>
+																	</div>
+																	</form>
+																</div>
+																<div class="col-sm-6">
+																</div>
+															</div>
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+									</div>			
+									</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			@endif
+			
+		</section>
+		</body>
+</div>
+@endif
 @endsection

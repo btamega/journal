@@ -98,6 +98,7 @@ div.mod_search35 input[type="search"]{
 
 @endsection
 @section('body')
+@if ($menu->value=="Horizontal")
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
     <div class="container">
     @if(App::getLocale()=='en' ||App::getLocale()=='fr')
@@ -107,123 +108,7 @@ div.mod_search35 input[type="search"]{
             <div class="inner">
                 <div class="general_content">                                                                        
                     <div class="main_content" style="padding: 30px">
-                    <div>{!!$aboutText->value!!}</div>
-                        <!-- <p style="box-sizing: inherit; margin: 1rem 0px; font-size: 12.8px; text-align: center;">
-                            <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;">
-                                <span style="color: #ff9900;">
-                                    <strong style="box-sizing: inherit; color: #333333; font-family: 'times new roman'; font-size: 12.16px;">
-                                        <span style="box-sizing: inherit; font-size: 14pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;">
-                                            <span style="color: #3b5998; font-size: 28pt;">Hespéris-Tamuda {{__('messages.titreAbout1')}} &nbsp; </span>
-                                        </span>
-                                    </strong>
-                                </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial; text-align: justify;" align="center">
-                            <img style="padding-right: 20px; width:189px; height:267px" class="img" src="{{asset("images/volumes_2021/2021-1-1.jpg")}}">
-                            <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif; font-size: medium;"> 
-                                <span style="font-size: 14pt;">
-                                    {{__('messages.paragraphe_1_About')}}
-                                </span>
-                            </span>
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit;"></span>
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;"></span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', serif; letter-spacing: -0.2pt;">
-                                    {{__('messages.paragraphe_2_About')}}
-                                </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'Times New Roman', Times, serif;">   
-                                    {{__('messages.paragraphe_3_About')}}
-                                </span>
-                            </span>
-                        </p>
-                        <p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_4_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_5_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_6_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_7_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_8_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_9_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_10_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_11_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: justify;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_12_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: center;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_13_About')}}
-                                </span>
-                            </span>
-                        </p>
-						<p style="box-sizing: inherit; margin: 1rem 0px; color: #000000; font-family: 'times new roman'; font-size: 12.8px; font-weight: 400; text-indent: 0px; text-align: center;">
-                            <span style="box-sizing: inherit; font-size: 14pt;">
-                                <span style="box-sizing: inherit; font-family: 'times new roman', times;" data-offset-key="48or4-0-0"> 
-                                    {{__('messages.paragraphe_14_About')}}
-                                </span>
-                            </span>
-                        </p> -->
-                        
-
+                        <div>{!!$aboutText->value!!}</div>
                     </div>
                 </div>
             </div>
@@ -394,6 +279,11 @@ div.mod_search35 input[type="search"]{
         </div>
     </div>
 </body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+    <div>{!!$aboutText->value!!}</div>
+</div>
+@endif
 @endsection
 
 

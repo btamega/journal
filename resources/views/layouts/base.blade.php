@@ -38,10 +38,12 @@
 	
 </head>
 <body>	
-    @include('include.header')
-     {{--start Body --}}
+	@if ($menu->value=="Vertical")
+	@include('include.header-vertical')
+	@else
+	@include('include.header')
+	@endif
     @yield('body')
-    {{--end Body --}}
     @include('include.footer')
     <script type="application/json" class="joomla-script-options new">{"system.keepalive":{"interval":840000,"uri":"\/fr\/index.php\/component\/ajax\/?format=json"}}</script>
 	<script src="{{ asset("js/jquery.min.js") }}"></script>

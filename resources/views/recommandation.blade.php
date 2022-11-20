@@ -71,6 +71,7 @@ div.mod_search35 input[type="search"]{
 @endsection
 
 @section('body')
+@if ($menu->value=="Horizontal")
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
 	<div class="container">
 		@if(App::getLocale()=='en' ||App::getLocale()=='fr')
@@ -628,4 +629,9 @@ div.mod_search35 input[type="search"]{
 		@endif
 	</div>
 </body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+    <div>{!!$recommandationText->value!!}</div>
+</div>
+@endif
 @endsection

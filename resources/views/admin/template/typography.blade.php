@@ -383,7 +383,7 @@
                       </label>
                     </div>
                     <div class="form-group">
-                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="organisation">
+                      <input style="display:none" type="text" class="form-control" id="textUniversite" name="organisation1">
                     </div>
                     <div class="form-check">
                       <input class="form-check-input" type="radio" name="organisation" id="associationId" value="option2" onclick="showOrganisation()">

@@ -224,7 +224,7 @@ Route::get("/export", [TemplateController::class, 'export']);
 Route::get("/notifications/modals", function () {
     return view('/admin/template/notifications/modals');
 });
-Route::get("/homePage", [TemplateController::class, 'getHome']);
+Route::get("/HomePage", [TemplateController::class, 'getHome']);
 Route::get("/AboutPage", [TemplateController::class, 'getAbout']);
 Route::get("/RecommandationPage", [TemplateController::class, 'getRecommandation']);
 Route::get("/ArchivesPage", [TemplateController::class, 'getArchives']);
