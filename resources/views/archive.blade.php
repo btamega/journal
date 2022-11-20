@@ -275,7 +275,133 @@ div.desc {
 </body>
 @else
 <div style="margin-left:20%;padding:1px 16px;height:1000px;">
-    <div>{!!$archivesText->value!!}</div>
+    <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
+        <div class="container">
+             <div id="sp-page-builder" class="sp-page-builder home-page page-8">
+                     <div class="page-content">
+                         <br> <br>
+                         @if(App::getLocale()=='en' ||App::getLocale()=='fr')
+                         <div class="contents">
+                             @foreach($archives as $item)
+                             @if ($item->Année>=2016)
+                                 <div class="responsive">
+                                 <div class="gallery">
+                                     <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">
+                                         <div class="desc">
+                                             <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">{{$item->Titre}} ({{$item->Année}})</a>
+                                         </div>
+                                     <img style="width: 600px; height:400px" src="{{asset($item->cover)}}" alt="Cinque Terre" width="600" height="400">
+                                     </a>
+                                     <div class="desc">{{$item->Nom_Volume}}</div>
+                                     
+                                 </div>
+                                 </div>
+                             @else
+                                 @foreach($fascicules as $fascicule)
+                                     @if($fascicule->id_volume==$item->id_volume)
+                                         <div class="responsive">
+                                         <div class="gallery">
+                                             <a style="text-decoration: none" href="/fascicule/{{$fascicule->id_fascicule}}/articles">
+                                                 <div class="desc">
+                                                     <a style="text-decoration: none" href="/fascicule/{{$fascicule->id_fascicule}}/articles">{{$item->Titre}} ({{$item->Année}})</a>
+                                                 </div>
+                                             <img style="width: 600px; height:400px" src="{{asset($item->cover)}}" alt="Cinque Terre" width="600" height="400">
+                                             </a>
+                                             <div class="desc">{{$item->Nom_Volume}}</div>
+                                             
+                                         </div>
+                                         </div>
+                                     @endif
+                                 @endforeach
+                             @endif
+                             @endforeach
+                             </div>
+                             <br> <br>
+                         @else
+                         <div class="contents">
+                             @foreach($archives as $item)
+                             @if ($item->Année>=2016)
+                                 <div class="responsive">
+                                 <div class="gallery">
+                                     <div class="desc">
+                                         <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">{{$item->Nom_Volume}}</a>
+                                     </div>
+                                     <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">
+                                     <div class="desc">{{$item->Nom_Volume}}</div>
+                                     <img style="width: 600px; height:400px" src="{{asset($item->cover)}}" alt="Cinque Terre" width="600" height="400">
+                                     </a>
+                                     <div class="desc">
+                                         <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">{{$item->Titre}} ({{$item->Année}})</a>
+                                     </div>
+                                 </div>
+                                 </div>
+                             @else
+                                 @foreach($fascicules as $fascicule)
+                                     @if($fascicule->id_volume==$item->id_volume)
+                                         <div class="responsive">
+                                         <div class="gallery">
+                                             <div class="desc">
+                                                 <a style="text-decoration: none" href="/volume/{{$item->id_volume}}/fascicules">{{$item->Nom_Volume}}</a>
+                                             </div>
+                                             <a style="text-decoration: none" href="/fascicule/{{$fascicule->id_fascicule}}/articles">
+                                             <div class="desc">{{$item->Nom_Volume}}</div>
+                                             <img style="width: 600px; height:400px" src="{{asset($item->cover)}}" alt="Cinque Terre" width="600" height="400">
+                                             </a>
+                                             <div class="desc">
+                                                 <a style="text-decoration: none" href="/fascicule/{{$fascicule->id_fascicule}}/articles">{{$item->Titre}} ({{$item->Année}})</a>
+                                             </div>
+                                                 
+                                         </div>
+                                         </div>
+                                     @endif
+                                 @endforeach
+                             @endif
+                             @endforeach
+                             </div>
+                             <br> <br>
+                         @endif
+                         
+                         
+                         <div class="container">
+                            <section id="section-id-1489028018418" class="sppb-section "  >
+                                <div class="sppb-row-container">
+                                    <div class="sppb-row">
+                                        <div class="sppb-col-md-9">
+                                            <div id="column-id-1489028018419" class="sppb-addon-container " >
+                                                <div id="sppb-addon-1489045700856" class="clearfix">
+                                                    <div class="sppb-addon sppb-addon-module margin-bottom">
+                                                        <div class="sppb-addon-content"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="section-id-1488967667777" class="sppb-section "  >
+                                <div class="sppb-row-container">
+                                    <div class="sppb-row">
+                                        <div class="sppb-col-md-12">
+                                            <div id="column-id-1488967667778" class="sppb-addon-container" ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="section-id-1568029480880" class="sppb-section "  >
+                                <div class="sppb-row-container">
+                                    <div class="sppb-row">
+                                        <div class="sppb-col-md-12">
+                                            <div id="column-id-1568029480881" class="sppb-addon-container" ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>	
+                        </div>
+                     </div>
+                 <a href="javascript:void(0)" class="scrollup">&nbsp;</a>
+             </div>
+         </div>
+     </body>
 </div>
 @endif
 @endsection

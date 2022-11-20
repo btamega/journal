@@ -111,6 +111,7 @@
 	</style>
 @endsection
 @section('body')
+@if ($menu->value=="Horizontal")
 <body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
 	<br> <br>
 	<div class="container">
@@ -131,5 +132,30 @@
 		@endforeach
 	</div>
 	<br> <br>
-  </body>
+</body>
+@else
+<div style="margin-left:20%;padding:1px 16px;height:1000px;">
+	<body class="site com-sppagebuilder layout2 homepage view-page  no-layout no-task itemid-556 fr-fr ltr  sticky-header layout-fluid off-canvas-menu-init">
+		<br> <br>
+		<div class="container">
+			@foreach($fascicules as $fascicule)
+			<div class="responsive">
+				<div class="gallery">
+					<div class="desc">{{$fascicule->Nom}}  {{$fascicule->numero}} ({{$fascicule->Année}})</div>
+					<a style="text-decoration: none" href="/fascicule/{{$fascicule->id_fascicule}}/articles">
+					@foreach($vignettes as $vignette)
+					@if ($vignette->id_fascicule==$fascicule->id_fascicule)
+					<img style="width: 600px; height:400px" src="{{asset($vignette->Path)}}" alt="Image not found" width="600" height="400">
+					@endif
+					@endforeach
+					</a>
+					<div class="desc">{{$fascicule->Titre_Fascicule}}</div>
+				</div>
+			</div>
+			@endforeach
+		</div>
+		<br> <br>
+	</body>
+</div>
+@endif
 @endsection

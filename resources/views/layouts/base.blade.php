@@ -44,7 +44,11 @@
 	@include('include.header')
 	@endif
     @yield('body')
+	@if ($menu->value=="Vertical")
+    @include('include.footer-vertical')
+	@else
     @include('include.footer')
+	@endif
     <script type="application/json" class="joomla-script-options new">{"system.keepalive":{"interval":840000,"uri":"\/fr\/index.php\/component\/ajax\/?format=json"}}</script>
 	<script src="{{ asset("js/jquery.min.js") }}"></script>
 	<script src="{{ asset("js/jquery-noconflict.js") }}"></script>

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\DB;
+use App\Models\NewArticles;
+use App\Models\Sommaires;
+use App\Models\Articles;
+use App\Models\Auteur;
 class TemplateController extends Controller
 {
     /**
@@ -84,6 +88,41 @@ class TemplateController extends Controller
     public function index()
     {
         return view("admin/template/index");
+    }
+    public function getVolumes(Request $request)
+    {
+        $volume=DB::table('volumes')->orderByDesc('id_volume')->get();
+        return view('admin/template/volume')->with('volumes',$volume);
+    }
+    public function getFascicules(Request $request)
+    {
+        $fascicule=DB::table('fascicules')->orderByDesc('id_fascicule')->get();
+        $volumes=DB::table('volumes')->orderByDesc('id_volume')->get();
+        return view('admin/template/fascicule')->with('fascicules',$fascicule)->with('volumes',$volumes);
+    }
+    public function getArticles(Request $request)
+    {
+        $articles = DB::table('new_articles')->orderByDesc('id_articles')->limit(20)
+            ->join('fascicules', 'new_articles.id_fascicule', '=', 'fascicules.id_fascicule')
+            ->join('sommaires', 'new_articles.id_sommaire', '=', 'sommaires.id_sommaire')
+            ->select('new_articles.*', 'sommaires.Titre as sommaire', 'fascicules.*')
+            ->get();
+        $fascicule=DB::table('fascicules')->orderByDesc('id_fascicule')->get();
+        $sommaires=Sommaires::all();
+        $nombreTotalArticles=NewArticles::all()->count();
+        $auteurs = Auteur::all();
+        return view('admin/template/articles')
+            ->with('articles',$articles)
+            ->with('nombre',$nombreTotalArticles)
+            ->with('sommaires',$sommaires)
+            ->with('auteurs',$auteurs)
+            ->with('fascicules',$fascicule);
+    }
+    public function getAdmins(Request $request)
+    {
+        $admins=DB::table('users')->where('role','admin')->get();
+        $users=DB::table('users')->get();
+        return view('admin/template/admins')->with('admins',$admins)->with('users',$users);
     }
     public function recurseCopy(
         string $sourceDirectory,

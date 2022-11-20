@@ -12,7 +12,7 @@ body {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #f1f1f1;
+  background-color: {{$backColor->value}};
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -32,7 +32,7 @@ li a {
 <ul id="ul">
   <li><img src="{{$logo->value}}" alt="not found" style="width: inherit"/></li>
   @foreach($menus as $key => $value)
-  <li><a href="{{URL::to('/'.$value->key.'Page')}}" style="text-decoration: none">{{ strtoupper($value->key) }}</a></li>
+  <li><a href="{{URL::to('/'.$value->key.'Page')}}" style="text-decoration: none; color: {{$textNav->value}};">{{ strtoupper($value->key) }}</a></li>
   @endforeach
   <hr style="border-top: 1px solid {{$textNav->value}}">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,19 +40,19 @@ li a {
             @guest
                 @if (Route::has('login'))
                     <li class="nav-item">
-                        <a  class="nav-link" data-target="#login" data-toggle="modal" href="#">{{ __('messages.login') }}</a>
+                        <a style="color: {{$textNav->value}}" class="nav-link" data-target="#login" data-toggle="modal" href="#">{{ __('messages.login') }}</a>
                     </li>
                 @endif
 
                 @if (Route::has('register'))
                     <li class="nav-item">
-                        <a data-target="#register" data-toggle="modal" class="nav-link" href="#">{{ __('messages.register') }}</a>
+                        <a style="color: {{$textNav->value}}" data-target="#register" data-toggle="modal" class="nav-link" href="#">{{ __('messages.register') }}</a>
                     </li>
                 @endif
 
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a style="color: {{$textNav->value}}" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
@@ -70,13 +70,13 @@ li a {
                 </li>
             @endguest
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <a style="color: {{$textNav->value}}" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 @foreach (Config::get('languages') as $lang => $language)
                     @if ($lang != App::getLocale())
-                            <a style="font-size:15px" class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                            <a style="font-size:15px; color: {{$textNav->value}}" class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
                     @endif
                 @endforeach
                 </div>
@@ -84,10 +84,10 @@ li a {
         </ul>
     </div>
   <hr style="border-top: 1px solid {{$textNav->value}}">
-  <li><a target="_blank" style="text-decoration: none" href="https://www.facebook.com/hesperistamudaOfficiel/">
+  <li><a target="_blank" style="text-decoration: none; color: {{$textNav->value}}" href="https://www.facebook.com/hesperistamudaOfficiel/">
     <i class="fa fa-facebook"></i> &nbsp; Facebook
     </a></li>
-  <li><a style="text-decoration: none" href="#">
+  <li><a style="text-decoration: none; color: {{$textNav->value}}" href="#">
     <i class="fa fa-twitter"></i> &nbsp; Twitter
 </a></li>
 <hr style="border-top: 1px solid {{$textNav->value}}">

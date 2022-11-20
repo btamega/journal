@@ -86,7 +86,7 @@
 					<div class="sp-column ">
 						<h1 class="logo">
 							<a href="#">
-								<img class="sp-default-logo" src="{{$logo->value}}" alt="Hésperis Tamuda">
+								<img class="sp-default-logo" src="{{$logo->value}}" alt="{{$journalName->value}}">
 							</a>
 						</h1>
 					</div>
@@ -116,20 +116,20 @@
 			<div class="topnav" id="myTopnav" style="background-color:{{$backColor->value}}">
 			    <div style="float: left;">
 				@foreach($menus as $key => $value)
-				<a href="{{URL::to('/'.$value->key.'Page')}}" class="active">{{ strtoupper($value->key) }}</a>
+				<a style="color: {{$textNav->value}}" href="{{URL::to('/'.$value->key.'Page')}}" class="active">{{ strtoupper($value->key) }}</a>
 				@endforeach
                 </div>
 				<div style="float: right;" >
-					<a target="_blank" href="https://www.facebook.com/hesperistamudaOfficiel/">
+					<a style="color: {{$textNav->value}}" target="_blank" href="https://www.facebook.com/hesperistamudaOfficiel/">
 					<i class="fa fa-facebook"></i>
 					</a>
-					<a target="_blank" href="#">
+					<a style="color: {{$textNav->value}}" target="_blank" href="#">
 						<i class="fa fa-twitter"></i>
 					</a>
-					<a target="_blank" href="#">
+					<a style="color: {{$textNav->value}}" target="_blank" href="#">
 						<i class="fa fa-google-plus"></i>
 					</a>
-					<a target="_blank" href="#">
+					<a style="color: {{$textNav->value}}" target="_blank" href="#">
 						<i class="fa fa-pinterest"></i>
 					</a>
 				</div>
@@ -140,22 +140,24 @@
 		<div class="topnav" id="myTopnav">
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 			<div  class="topnav1 " >
-				<a target="_blank" href="https://www.facebook.com/hesperistamudaOfficiel/">
+				<a style="color: {{$textNav->value}}" target="_blank" href="https://www.facebook.com/hesperistamudaOfficiel/">
 				<i class="fa fa-facebook"></i>
 				</a>
-				<a target="_blank" href="#">
+				<a style="color: {{$textNav->value}}" target="_blank" href="#">
 					<i class="fa fa-twitter"></i>
 				</a>
-				<a target="_blank" href="#">
+				<a style="color: {{$textNav->value}}" target="_blank" href="#">
 					<i class="fa fa-google-plus"></i>
 				</a>
-				<a target="_blank" href="#">
+				<a style="color: {{$textNav->value}}" target="_blank" href="#">
 					<i class="fa fa-pinterest"></i>
 				</a>
 			</div>
 			<div style="float: right; font-family: Georgia, 'Times New Roman', Times, serif">
-				<a href="{{URL::to('/contact')}}" >{{__('messages.contact')}}</a>
-				<div class="dropdown1">
+				@foreach($menus as $key => $value)
+				<a style="color: {{$textNav->value}}" href="{{URL::to('/'.$value->key.'Page')}}" class="active">{{ strtoupper($value->key) }}</a>
+				@endforeach
+				{{-- <div class="dropdown1">
 					<button class="dropbtn"  >{{__('messages.derniersVolumes')}} 
 					<i class="fa fa-caret-down"></i>
 					</button>
@@ -194,7 +196,7 @@
 				</div> 
 				<a href="{{URL::to('/comiteEditorial')}}" >{{__('messages.comiteEditorial')}}</a>
 				<a  href="{{URL::to('/about')}}" >{{__('messages.a_propos')}}</a>
-				<a href="{{URL::to('/')}}" class="active">{{__('messages.accueil')}}</a>
+				<a href="{{URL::to('/')}}" class="active">{{__('messages.accueil')}}</a> --}}
 			</div>
 		</div>
 	</div>

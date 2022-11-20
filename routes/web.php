@@ -56,7 +56,7 @@ Route::get('/admin/register', function () {
     return view('admin/register');
 });
 Route::get('/user/signUp', 'App\Http\Controllers\SecurityController@signUp');
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [TemplateController::class, 'getHome']);
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -229,4 +229,8 @@ Route::get("/AboutPage", [TemplateController::class, 'getAbout']);
 Route::get("/RecommandationPage", [TemplateController::class, 'getRecommandation']);
 Route::get("/ArchivesPage", [TemplateController::class, 'getArchives']);
 Route::get("/ContactPage", [TemplateController::class, 'getContact']);
+Route::get("/template/volume", [TemplateController::class, 'getVolumes']);
+Route::get("/template/fascicule", [TemplateController::class, 'getFascicules']);
+Route::get("/template/articles", [TemplateController::class, 'getArticles']);
+Route::get("/template/admins", [TemplateController::class, 'getAdmins']);
 
