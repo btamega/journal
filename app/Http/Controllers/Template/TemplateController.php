@@ -49,7 +49,8 @@ class TemplateController extends Controller
     public function getHome()
     {
         $homeText = DB::table('key_value')->where('key','home')->first();
-        return view('/home')->with('homeText',$homeText);
+        $universite = DB::table('key_value')->where('key','organisation')->first();
+        return view('/home')->with('homeText',$homeText)->with('universite',$universite);
     }
     public function getAbout()
     {

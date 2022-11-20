@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-Hespéris Tamuda
+{{$journalName->value }} | ABOUT
 @endsection
 <!-- Style d'accueil -->
 @section('stylesheet')

@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $dispositionMenu = DB::table('key_value')->select('value')->where('key','menu')->first();
         $colorText = DB::table('key_value')->select('value')->where('key','colorText')->first();
         $colorBackground = DB::table('key_value')->select('value')->where('key','colorBody')->first();
-       
+        $journalName = DB::table('key_value')->select('value')->where('key','journalName')->first();
         foreach($recentArchives as $item)
 		{
             array_push($tab,$item);
@@ -52,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('menu',$dispositionMenu);
         View::share('textNav',$colorText);
         View::share('backColor',$colorBackground);
+        View::share('journalName',$journalName);
         View::share('recentArchives',$recentArchives);
         $messages = DB::table('commentaires')->orderByDesc('id')->get();
         $nombreMessage = $messages->count();

@@ -366,7 +366,6 @@
                 <div class="card mb-4">
                   <div class="card-header"><strong>Veuillez remplir les champs ci-dessous</strong></div>
                   <div class="card-body">
-                    {{-- <p class="text-medium-emphasis small">The tabs plugin also works with pills.</p> --}}
                     <div class="example">
                       <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item"><a class="nav-link active" data-coreui-toggle="tab" href="#preview-546" role="tab">
@@ -379,7 +378,7 @@
                           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             @foreach($menus as $key => $value)
                                 <li class="nav-item" role="presentation">
-                                    <button onclick="setId('{{ $value }}')" class="nav-link" id="pills-{{ $value }}-tab" data-coreui-toggle="pill" data-coreui-target="#pills-{{ $value }}" type="button" role="tab" aria-controls="pills-{{ $value }}" aria-selected="true">{{ $value }}</button>
+                                    <button onclick="setId('{{ $value }}')" class="nav-link" id="pills-{{ str_replace(' ', '_', $value); }}-tab" data-coreui-toggle="pill" data-coreui-target="#pills-{{ $value }}" type="button" role="tab" aria-controls="pills-{{ $value }}" aria-selected="true">{{ $value }}</button>
                                 </li>
                             @endforeach
                           </ul>
@@ -419,7 +418,7 @@
                               </form>
                               <p id="contact" style="text-align: center"></p>
                             </div>
-                            <div class="tab-pane fade" id="pills-LastIssues" role="tabpanel" aria-labelledby="pills-LastIssues-tab">
+                            <div class="tab-pane fade" id="pills-Last_Issues" role="tabpanel" aria-labelledby="pills-Last_Issues-tab">
                               <form id="lastIssuesForm">
                                   <textarea name="lastIssuesText" id="summernoteLastIssues" cols="30" rows="10"></textarea>
                                   <button class="btn btn-success" type="button" onclick="submitLastIssues()" id="sendLastIssues">Envoyer</button>
@@ -598,7 +597,6 @@
             });
           }
           function submitContact() {
-            // checkInputs();
             var contenu = document.getElementById("summernoteContact").value;
               let _token   = $('meta[name="csrf-token"]').attr('content');
               $.ajax({

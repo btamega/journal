@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-{{__('messages.contact')}}
+{{$journalName->value }} | CONTACT
 @endsection
 @section('stylesheet')
 <style>

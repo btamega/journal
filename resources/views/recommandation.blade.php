@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-{{__('messages.recommandation')}}
+{{$journalName->value }} | RECOMMANDATIONS
 @endsection
 @section('stylesheet')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

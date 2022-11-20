@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-Hespéris Tamuda
+{{$journalName->value}}
 @endsection
 <!-- Style d'accueil -->
 @section('stylesheet')
@@ -169,7 +169,6 @@ div.mod_search35 input[type="search"]{
         </div>
     </div>
     @endif
-    <!-- Liste des universités -->
     <section id="section-id-1489028018413" class="sppb-section ">
         <div class="sppb-row-container">
             <div class="sppb-row">
@@ -183,7 +182,7 @@ div.mod_search35 input[type="search"]{
                                             <li class="item">
                                                 <div class="main"><img src="images/UM5.png" width="56" height="47" /><br />
                                                     <div class="content">
-                                                        <h3><a href="http://www.um5.ac.ma/um5r/">Université Mohamed 5</a></h3>
+                                                        <h3><a href="http://www.um5.ac.ma/um5r/">{{$universite->value}}</a></h3>
                                                         <p>Rabat- Maroc</p>
                                                     </div>
                                                 </div>
@@ -215,7 +214,6 @@ div.mod_search35 input[type="search"]{
         </div>
     </section> <br> 
     </div>
-            <!-- Fin liste des universités -->
     <section id="section-id-1489028018418" class="sppb-section "  >
         <div class="sppb-row-container">
             <div class="sppb-row">
@@ -279,16 +277,16 @@ div.mod_search35 input[type="search"]{
                                                 <li class="item">
                                                     <div class="main"><img src="images/UM5.png" width="56" height="47" /><br />
                                                         <div class="content">
-                                                            <h3><a href="http://www.um5.ac.ma/um5r/">Université Mohamed 5</a></h3>
+                                                            <h3><a href="http://www.um5.ac.ma/um5r/">{{$universite->value}}</a></h3>
                                                             <p>Rabat- Maroc</p>
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li class="item">
-                                                    <div class="main"><img src="images/faculté des lettres.jpeg" width="56" height="47" /><br />
+                                                    <div class="main"><img src="http://www.fstg-marrakech.ac.ma/FST/images/LOGO_FST.png" width="56" height="47" />
                                                         <div class="content">
-                                                            <h3><a href="http://www.um5.ac.ma/um5r/">Faculté des lettres</a></h3>
-                                                            <p>Rabat- Maroc</p>
+                                                            <h3><a href="http://www.fstg-marrakech.ac.ma/FST/">Faculté des Sciences et Techniques</a></h3>
+                                                            <p>Marrakech- Maroc</p>
                                                         </div>
                                                     </div>
                                                 </li>

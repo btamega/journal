@@ -447,13 +447,13 @@
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Archives" id="archives" name="menu[]">
+                      <input class="form-check-input" type="checkbox" value="Archives" id="archives" checked="" name="menu[]">
                       <label class="form-check-label" for="archives">
                         Archives
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="Last Issues" id="lastIssues" name="menu[]">
+                      <input class="form-check-input" type="checkbox" value="Last Issues" checked="" id="lastIssues" name="menu[]">
                       <label class="form-check-label" for="lastIssues">
                         Last Issues
                       </label>
