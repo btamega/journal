@@ -14,11 +14,7 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         //
-        $admin=new \App\Models\Admin;
-        $admin->adminName="TAMEGA";
-        $admin->adminPassword="1234567";
-        $admin->adminSpecialite="Informaticien";
-        $admin->save();
+       
 
 
     }

@@ -15,10 +15,10 @@ class FasciculesTableSeeder extends Seeder
     {
         //
         $fascicule=new \App\Models\Fascicules;
-        $fascicule->id_volume="12";
+        $fascicule->id_volume="2";
         $fascicule->Nom="fascicule";
-        $fascicule->Année="2021";
-        $fascicule->numero="1";
+        $fascicule->Année="2022";
+        $fascicule->Numero="1";
         $fascicule->save();
     }
 }

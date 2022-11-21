@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentairesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCommentairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('commentaires', function (Blueprint $table) {
-            $table->id();
+        Schema::create('volumes', function (Blueprint $table) {
+            $table->bigIncrements('id_volume');
             $table->timestamps();
-            $table->string('Message');
-            $table->string('Email');
-            $table->string('Nom');
-            $table->string('url_website');
+            $table->string('Titre');
+            $table->string('Année');
+            $table->string('cover');
+            $table->string('Nom_Volume');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateCommentairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commentaires');
+        Schema::dropIfExists('volumes');
     }
-}
+};
