@@ -414,10 +414,10 @@
             data: {
               _token: _token},  
             success: function (data){
-              window.alert('success filled')
+              window.alert('Successfully filled')
               if (window.confirm('Do you want to continue?'))
                 {
-                  window.location.href = "/template/collapse"
+                  window.location.href = "/template/volume"
                 }
             },
             error: function() {
@@ -450,14 +450,13 @@
         });
       }
       function submitRecommandation() {
-        // checkInputs();
         var contenu = document.getElementById("summernoteRecommandation").value;
           let _token   = $('meta[name="csrf-token"]').attr('content');
           $.ajax({
             type: "POST",
             url: "/template/menuRecommandation",
             data: {
-              homeText:contenu,
+              recommandationText:contenu,
               _token: _token},  
             success: function (data){
               $(this).find(':button[type=submit]').prop('disabled', true);
@@ -480,7 +479,7 @@
             type: "POST",
             url: "/template/menuArchives",
             data: {
-              homeText:contenu,
+              archivesText:contenu,
               _token: _token},  
             success: function (data){
               $(this).find(':button[type=submit]').prop('disabled', true);
@@ -503,7 +502,7 @@
             type: "POST",
             url: "/template/menuContact",
             data: {
-              homeText:contenu,
+              contactText:contenu,
               _token: _token},  
             success: function (data){
               $(this).find(':button[type=submit]').prop('disabled', true);

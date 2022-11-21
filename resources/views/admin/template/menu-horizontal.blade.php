@@ -435,7 +435,7 @@
                   window.alert('success filled')
                   if (window.confirm('Do you want to continue?'))
                     {
-                      window.location.href = "/template/collapse"
+                      window.location.href = "/template/volume"
                     }
                 },
                 error: function() {

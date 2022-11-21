@@ -16,7 +16,7 @@ class CreateFasciculesTable extends Migration
         Schema::create('fascicules', function (Blueprint $table) {
             $table->bigIncrements('id_fascicule');
             $table->timestamps();
-            $table->foreignId('id_volume')->references('id_volume')->on('volumes');;
+            $table->foreignId('id_volume')->references('id_volume')->on('volumes');
             $table->String('Nom');
             $table->String('Année');
         });
