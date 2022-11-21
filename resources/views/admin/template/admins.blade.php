@@ -172,7 +172,7 @@
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-user")}}"></use>
             </svg> Admins</a>
         </li>
-        <li class="nav-item mt-auto"><a class="nav-link" href="{{URL::to("template/auteurs")}}" target="_blank">
+        <li class="nav-item mt-auto"><a class="nav-link" href="{{URL::to("template/auteurs")}}" >
             <svg class="nav-icon">
               <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-people")}}"></use>
             </svg> Auteurs</a></li>

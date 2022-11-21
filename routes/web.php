@@ -233,4 +233,6 @@ Route::get("/template/volume", [TemplateController::class, 'getVolumes']);
 Route::get("/template/fascicule", [TemplateController::class, 'getFascicules']);
 Route::get("/template/articles", [TemplateController::class, 'getArticles']);
 Route::get("/template/admins", [TemplateController::class, 'getAdmins']);
+Route::get("/template/auteurs", [TemplateController::class, 'getAuteurs']);
+Route::get("/template/sommaires", [TemplateController::class, 'getSommaires']);
 

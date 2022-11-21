@@ -9,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>Génération de template</title>
+    <title>Sommaires du journal</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{asset("template/assets/favicon/apple-icon-57x57.png")}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{asset("template/assets/favicon/apple-icon-60x60.png")}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{asset("template/assets/favicon/apple-icon-72x72.png")}}">
@@ -37,6 +37,47 @@
     <link href="{{asset("template/css/examples.css")}}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
+    <style>
+      #btnModify{
+        display: none;
+      }
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color:#4169E1;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+      </style>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -46,6 +87,47 @@
       // Bootstrap ID
       gtag('config', 'UA-118965717-5');
     </script>
+    <style>
+      #btnModify{
+        display: none;
+      }
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color:#4169E1;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;} 
+        to {bottom: 30px; opacity: 1;}
+      }
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;} 
+        to {bottom: 0; opacity: 0;}
+      }
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+      </style>
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -74,15 +156,15 @@
             </svg> Volumes</a>
         </li>
         <li class="nav-group"><a class="nav-link" href="{{URL::to('template/fascicule')}}">
-          <svg class="nav-icon">
-            <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-spreadsheet")}}"></use>
-          </svg> Fascicules</a>
-      </li>
-      <li class="nav-group"><a class="nav-link" href="{{URL::to('template/articles')}}">
-          <svg class="nav-icon">
-            <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-notes")}}"></use>
-          </svg> Articles</a>
-      </li>
+            <svg class="nav-icon">
+              <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-spreadsheet")}}"></use>
+            </svg> Fascicules</a>
+        </li>
+        <li class="nav-group"><a class="nav-link" href="{{URL::to('template/articles')}}">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset("template/node_modules/vendors/@coreui/icons/svg/free.svg#cil-notes")}}"></use>
+            </svg> Articles</a>
+        </li>
         <li class="nav-divider"></li>
         <li class="nav-title">Extras</li>
         <li class="nav-group"><a class="nav-link" href="{{URL::to("template/admins")}}">
@@ -183,13 +265,100 @@
             <ol class="breadcrumb my-0 ms-2">
               <li class="breadcrumb-item"><a href="{{URL::to("admin/template")}}">Home</a>
               </li>
+              <li class="breadcrumb-item active"><span>Journal</span></li>
             </ol>
           </nav>
         </div>
       </header>
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-         
+          <div class="card mb-4">
+            <div class="card-header">Informations de base</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                    @if(Session::has('sommaireAdded'))
+                    <div class="alert alert-success" role="alert">
+                        {{Session::get('sommaireAdded')}}
+                    </div>
+                    @endif
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Accordion -->
+                        <a href="#sommaire" class="d-block card-header py-3" data-toggle="collapse"
+                            role="button" aria-expanded="true" aria-controls="sommaire">
+                            <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau sommaire</h6>
+                        </a>
+                        <!-- Card Content - Collapse -->
+                        <div class="collapse show" id="sommaire">
+                            <div class="card-body">
+                                <div class="collapse show" id="newUser"> <br>
+                                    <div class="container">
+                                        <form class="user" action="{{URL::to('createSommaire')}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                                    <input type="text" name="titre" class="form-control form-control-user" id="exampleFirstName"
+                                                        placeholder="Titre du sommaire" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <button type="submit" class="btn btn-primary btn-user btn-block">Ajouter</button>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <button type="reset" class="btn btn-google btn-user btn-block">Annuler</button>
+                                                </div>
+                                              </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <div class="col-8">
+                                @if(Session::has('deleted'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('deleted')}}
+                                </div>
+                                @elseif(Session::has('notDeleted'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('notDeleted')}}
+                                </div>
+                                @elseif(Session::has('errorPassword'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('errorPassword')}}
+                                </div>
+                                @elseif(Session::has('userExist'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{Session::get('userExist')}}
+                                </div>
+                                @elseif(Session::has('adminAdded'))
+                                <div class="alert alert-success" role="alert">
+                                    {{Session::get('adminAdded')}}
+                                </div>
+                                @endif
+                            </div>
+                            <h6 class="m-0 font-weight-bold text-primary">Sommaires existants</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="collapse show" id="user">
+                                <select id="select-state" placeholder="Entrez un mot..." multiple="multiple" class="form-select">
+                                    @foreach($sommaires as $sommaire)
+                                    <option>{{$sommaire->Titre}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
       <footer class="footer">
@@ -204,7 +373,6 @@
     <script src="{{asset("template/node_modules/vendors/@coreui/chartjs/js/coreui-chartjs.js")}}"></script>
     <script src="{{asset("template/node_modules/vendors/@coreui/utils/js/coreui-utils.js")}}"></script>
     <script src="{{asset("template/js/main.js")}}"></script>
-    <script> 
-    </script>
+     
   </body>
 </html>

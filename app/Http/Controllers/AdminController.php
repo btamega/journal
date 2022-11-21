@@ -110,7 +110,7 @@ class AdminController extends Controller
         Auth::logout();
         Session::flush();
         Session::put('success','You are logout successfully');        
-        return redirect()->back();
+        return view('/home');
     }
     public function register(Request $request)
     {

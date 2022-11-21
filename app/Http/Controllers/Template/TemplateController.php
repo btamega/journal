@@ -124,6 +124,16 @@ class TemplateController extends Controller
         $users=DB::table('users')->get();
         return view('admin/template/admins')->with('admins',$admins)->with('users',$users);
     }
+    public function getAuteurs(Request $request)
+    {
+        $nombre=Auteur::all()->count();
+        return view('admin/template/auteur')->with('nombre',$nombre);
+    }
+    public function getSommaires(Request $request)
+    {
+        $sommaires=Sommaires::all();
+        return view('admin/template/sommaire',compact('sommaires'));
+    }
     public function recurseCopy(
         string $sourceDirectory,
         string $destinationDirectory,
