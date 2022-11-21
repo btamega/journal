@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVolumesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateVolumesTable extends Migration
      */
     public function up()
     {
-        Schema::create('volumes', function (Blueprint $table) {
-            $table->bigIncrements('id_volume');
+        Schema::create('sommaires', function (Blueprint $table) {
+            $table->bigIncrements('id_sommaire');
             $table->timestamps();
-            $table->String('Titre');
-            $table->String('Année');
+            $table->string('Titre');
+           
         });
     }
 
@@ -28,6 +28,6 @@ class CreateVolumesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('volumes');
+        Schema::dropIfExists('sommaires');
     }
-}
+};

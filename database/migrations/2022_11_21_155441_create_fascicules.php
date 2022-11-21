@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFasciculesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -16,9 +16,10 @@ class CreateFasciculesTable extends Migration
         Schema::create('fascicules', function (Blueprint $table) {
             $table->bigIncrements('id_fascicule');
             $table->timestamps();
-            $table->foreignId('id_volume')->references('id_volume')->on('volumes');;
-            $table->String('Nom');
-            $table->String('Année');
+            $table->string('Nom');
+            $table->string('Année');
+            $table->string('Numero');
+            $table->foreignId('id_volume')->references('id_volume')->on('volumes');
         });
     }
 
@@ -31,4 +32,4 @@ class CreateFasciculesTable extends Migration
     {
         Schema::dropIfExists('fascicules');
     }
-}
+};

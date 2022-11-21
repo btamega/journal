@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateFasicule extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class UpdateFasicule extends Migration
      */
     public function up()
     {
-        Schema::table('fascicules', function (Blueprint $table) {
-            $table->Integer('numero');
+        Schema::create('auteurs', function (Blueprint $table) {
+            $table->bigIncrements('id_auteur');
+            $table->timestamps();
+            $table->string('Nom');
+            $table->string('Prenom');
+           
         });
     }
 
@@ -25,6 +29,6 @@ class UpdateFasicule extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('auteurs');
     }
-}
+};

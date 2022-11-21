@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class EditersTableSeeder extends Seeder
 {
     /**
@@ -14,9 +14,11 @@ class EditersTableSeeder extends Seeder
     public function run()
     {
         //
-        $editers=new \App\Models\Editer;
-        $editers->id_articles="109";
-        $editers->id_auteur="188";
-        $editers->save();
+       
+        DB::table('new__editers')->insert([
+            'id_articles' => 4,
+            'id_auteur' => 1,
+            
+        ]);
     }
 }
